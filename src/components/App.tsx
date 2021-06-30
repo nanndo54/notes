@@ -1,18 +1,29 @@
+import Login from 'pages/Login'
+import Main from 'pages/Main'
+import Note from 'pages/Note'
+import Notes from 'pages/Notes'
 import React from 'react'
 import injectSheet, { WithStylesProps } from 'react-jss'
+import { Route } from 'wouter'
 
-import Form from './Form'
+import Footer from './Footer'
 import Navbar from './Navbar'
-import Notes from './Notes'
 
-interface IProps extends WithStylesProps<typeof styles> {}
-
-const App: React.FC<IProps> = ({ classes }) => {
+const App: React.FC<WithStylesProps<typeof styles>> = ({ classes }) => {
   return (
     <div className={classes.base}>
       <Navbar />
-      <Form />
-      <Notes />
+      <Route path='/'>
+        <Main />
+      </Route>
+      <Route path='/notes'>
+        <Notes />
+      </Route>
+      <Route path='/note/:id'>{({ id }) => <Note id={id} />}</Route>
+      <Route path='/login'>
+        <Login />
+      </Route>
+      <Footer />
     </div>
   )
 }
@@ -22,9 +33,8 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 60,
-    minHeight: 'calc(100vh - 60px)',
+    padding: '70px 40px 50px',
+    minHeight: 'calc(100vh - 120px)',
     background: '#EEE'
   }
 }

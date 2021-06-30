@@ -1,15 +1,12 @@
 import React from 'react'
 import injectSheet, { WithStylesProps } from 'react-jss'
-import { Link } from 'wouter'
 
 interface IProps extends WithStylesProps<typeof styles> {}
 
-const Navbar: React.FC<IProps> = ({ classes }) => {
+const Footer: React.FC<IProps> = ({ classes }) => {
   return (
     <div className={classes.base}>
-      <div>menu</div>
-      <div>logo</div>
-      <Link to='/login'>foto</Link>
+      <div>pabloc54</div>
     </div>
   )
 }
@@ -20,13 +17,13 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-around',
     position: 'fixed',
-    top: '0',
-    width: '90vw',
-    height: '50px',
-    background: '#EEE',
-    boxShadow: '0 0 7px #888',
-    zIndex: 10
+    bottom: 0,
+    height: 35,
+    width: '100vw',
+    background: '#222',
+    color: '#EEE',
+    zIndex: -1
   }
 }
 
-export default injectSheet(styles)(Navbar)
+export default injectSheet(styles)(Footer)

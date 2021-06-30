@@ -1,14 +1,11 @@
 import './index.css'
 
 import App from 'components/App'
-import { initialNotes } from 'hooks/useNotes'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import noteReducer from 'reducers/noteReducer'
-import { createStore } from 'redux'
 
-const store = createStore(noteReducer, initialNotes)
+import store from './store'
 
 ReactDOM.render(
   <React.StrictMode>

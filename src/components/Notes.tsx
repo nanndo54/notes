@@ -1,19 +1,18 @@
 import Note from 'components/Note'
-import useNotes from 'hooks/useNotes'
+import INote from 'models/Note'
 import React from 'react'
 import injectSheet, { WithStylesProps } from 'react-jss'
+import { useSelector } from 'react-redux'
 
 interface IProps extends WithStylesProps<typeof styles> {}
 
-// TODO: make display:grid
-
 const Notes: React.FC<IProps> = ({ classes }) => {
-  const { notes } = useNotes()
+  const notes = useSelector((state: INote[]) => state)
 
   return (
     <div className={classes.base}>
-      {notes.map(({ id, title, description }) => (
-        <Note key={id} title={title} description={description} />
+      {notes.map((note) => (
+        <Note key={note.id} note={note} />
       ))}
     </div>
   )
@@ -21,7 +20,8 @@ const Notes: React.FC<IProps> = ({ classes }) => {
 
 const styles = {
   base: {
-    display: 'grid'
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2,1fr)'
   }
 }
 

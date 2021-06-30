@@ -1,18 +1,27 @@
-import { addNote } from 'hooks/useNotes'
 import Note from 'models/Note'
 import { Reducer } from 'redux'
 
-type Action = { type: 'add'; payload: Note }
+type actionType = '@notes/add' | '@notes/delete'
+
+type Action = { type: actionType; payload: Note }
 
 const noteReducer: Reducer<Note[], Action> = (state = [], action) => {
-  const { type, payload } = action
-  switch (type) {
-    case 'add':
-      return addNote(state, payload)
-
+  switch (action.type) {
+    case '@notes/add': {
+      const newNotes = state.concat(action.payload)
+      save(newNotes)
+      return newNotes
+    }
+    case '@notes/delete': {
+      const newNotes = state.filter((note) => note.id != action.payload.id)
+      save(newNotes)
+      return newNotes
+    }
     default:
       return state
   }
 }
+
+const save = (notes: Note[]) => localStorage.setItem('notes', JSON.stringify(notes))
 
 export default noteReducer

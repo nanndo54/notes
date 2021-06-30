@@ -16,7 +16,8 @@
     "react-hook-form": "^7.9.0",
     "react-redux": "^7.2.4",
     "vite-tsconfig-paths": "^3.3.13",
-    "wouter": "^2.7.4"
+    "wouter": "^2.7.4",
+    "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",

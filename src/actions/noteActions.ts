@@ -2,9 +2,14 @@ import Note from 'models/Note'
 
 const generateId = () => Math.floor(Math.random() * 99999999999) + 1
 
-const createNote = (payload: Note) => ({
-  type: 'add',
-  payload: { ...payload, id: generateId() }
+const createNote = (data: Note) => ({
+  type: '@notes/add',
+  payload: { ...data, id: generateId() }
 })
 
-export { createNote }
+const deleteNote = (data: number) => ({
+  type: '@notes/delete',
+  payload: { id: data }
+})
+
+export { createNote, deleteNote }

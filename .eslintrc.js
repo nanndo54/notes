@@ -40,6 +40,7 @@ module.exports = {
         specialLink: ['hrefLeft', 'hrefRight'],
         aspects: ['invalidHref', 'preferButton']
       }
-    ]
+    ],
+    'jsx-a11y/no-static-element-interactions': 'off'
   }
 }
