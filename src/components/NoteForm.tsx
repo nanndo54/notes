@@ -1,10 +1,10 @@
 import { createNote } from 'actions/noteActions'
-import { updateNoteForm } from 'actions/noteFormActions'
+// import { updateNoteForm } from 'actions/noteFormActions'
 import Note from 'models/Note'
-import RootState from 'models/RootState'
+// import RootState from 'models/RootState'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { connect, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import styles from 'styles/NoteForm.module.css'
 
 const NoteForm = () => {
