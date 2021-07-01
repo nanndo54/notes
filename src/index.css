@@ -1,5 +1,5 @@
 body {
-  padding-bottom: 35px;
+  padding-bottom: 50px;
   margin: 0;
 }
 
@@ -7,24 +7,33 @@ body {
   font-family: 'Courier New', Courier, monospace;
 }
 
-.input-text {
-  width: calc(100% - 20px);
-  padding: 10px 8px;
+label {
+  margin: 0 0 4px 15px;
+  font-size: 12px;
+  color: '#777';
+}
+
+input {
+  width: calc(100% - 32px);
+  padding: 10px 14px;
   margin-bottom: 15px;
   border: 2px solid #aaa;
   border-radius: 20px 20px 0;
+  z-index: 1;
 }
 
-.input-textarea {
-  width: calc(100% - 20px);
-  padding: 10px 8px;
-  margin-bottom: 15px;
-  border: 2px solid #aaa;
-  border-radius: 15px 15px 0;
+button {
+  width: 100%;
+  padding: 10px 7px;
+}
+
+input,
+[contenteditable='true'] {
+  font-size: 13px;
 }
 
 input:focus,
-.input-textarea:focus,
+[contenteditable='true']:focus,
 button:focus {
   outline: none !important;
   border-color: #79c;
@@ -38,4 +47,14 @@ button:focus {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+[contenteditable='true']:empty:before {
+  content: attr(aria-placeholder);
+  display: block;
+}
+
+[contenteditable='true']:empty:before {
+  content: attr(aria-placeholder);
+  display: block;
 }

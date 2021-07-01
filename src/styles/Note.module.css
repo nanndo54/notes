@@ -1,0 +1,31 @@
+.base {
+  flex-direction: column;
+  min-width: 200px;
+  min-height: 200px;
+  margin: 5px;
+  padding: 10px;
+  background: #449;
+  border-bottom: 5px solid #333;
+  border-right: 3px solid #333;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.base:hover {
+  cursor: pointer;
+}
+
+.title {
+  padding: 5px 0;
+  width: 100%;
+  font-size: 19px;
+  font-weight: 500;
+  color: rgb(247, 187, 187);
+}
+
+.description {
+  padding: 5px 0;
+  width: 100%;
+  color: #ccc;
+  font-size: 14;
+}

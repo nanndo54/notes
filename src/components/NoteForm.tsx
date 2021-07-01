@@ -1,64 +1,46 @@
 import { createNote } from 'actions/noteActions'
+import { updateNoteForm } from 'actions/noteFormActions'
 import Note from 'models/Note'
+import RootState from 'models/RootState'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import injectSheet, { WithStylesProps } from 'react-jss'
-import { useDispatch } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
+import styles from 'styles/NoteForm.module.css'
 
-interface IProps extends WithStylesProps<typeof styles> {}
-
-// TODO: make title required
-
-const NoteForm: React.FC<IProps> = ({ classes }) => {
-  const { register, setValue, handleSubmit } = useForm<Note>()
+const NoteForm = () => {
+  const { register, handleSubmit, reset } = useForm<Note>()
   const dispatch = useDispatch()
 
   const onSubmit: SubmitHandler<Note> = (note) => {
     dispatch(createNote(note))
-    setValue('title', '')
-    setValue('description', '')
+    reset()
   }
 
   return (
-    <div className={classes.base}>
+    <div className={styles.base}>
       <form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-        <label htmlFor='title' className={`${classes.label} unselectable`}>
+        <label htmlFor='title' className={'unselectable'}>
           Title
         </label>
-        <input
-          id='title'
-          className='input-text'
-          placeholder='Walk the dog 🐕'
-          {...register('title')}
-        />
-        <div>
-          <label htmlFor='description' className={`${classes.label} unselectable`}>
-            Description
-          </label>
-          <div
-            id='description'
-            className='input-textarea'
-            role='textbox'
-            contentEditable
-            {...register('description')}
-          />
-          <button className={classes.send}>Create note</button>
-        </div>
+        <input id='title' placeholder='Walk the dog 🐕' {...register('title')} />
+        <label htmlFor='description' className={'unselectable'}>
+          Description
+        </label>
+        <input id='description' placeholder="Don't forget" {...register('description')} />
+        {/* <div
+          id='description'
+          className='input-textarea'
+          role='textbox'
+          contentEditable
+          {...register('description')}
+        /> */}
+        <button>Create note</button>
       </form>
     </div>
   )
 }
 
-const styles = {
-  base: {
-    width: '100%',
-    margin: '40px 0'
-  },
-  label: { margin: '0 0 4px 15px', fontSize: 12, color: '#777' },
-  send: {
-    width: '100%',
-    padding: '10px 7px'
-  }
-}
+// TODO: connect form with redux
+// connect((state: RootState) => state.noteForm, updateNoteForm)(NoteForm)
 
-export default injectSheet(styles)(NoteForm)
+export default NoteForm

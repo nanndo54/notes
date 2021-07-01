@@ -1,19 +1,8 @@
 import React from 'react'
-import injectSheet, { WithStylesProps } from 'react-jss'
+import styles from 'styles/Login.module.css'
 
-const Login: React.FC<WithStylesProps<typeof styles>> = ({ classes }) => {
-  return <div className={classes.base}>quepex</div>
+const Login = () => {
+  return <div className={styles.base}>quepex</div>
 }
 
-const styles = {
-  base: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    paddingTop: 60,
-    minHeight: 'calc(100vh - 60px)',
-    background: '#EEE'
-  }
-}
-
-export default injectSheet(styles)(Login)
+export default Login

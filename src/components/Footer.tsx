@@ -1,29 +1,12 @@
 import React from 'react'
-import injectSheet, { WithStylesProps } from 'react-jss'
+import styles from 'styles/Footer.module.css'
 
-interface IProps extends WithStylesProps<typeof styles> {}
-
-const Footer: React.FC<IProps> = ({ classes }) => {
+const Footer = () => {
   return (
-    <div className={classes.base}>
+    <div className={styles.base}>
       <div>pabloc54</div>
     </div>
   )
 }
 
-const styles = {
-  base: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    position: 'fixed',
-    bottom: 0,
-    height: 35,
-    width: '100vw',
-    background: '#222',
-    color: '#EEE',
-    zIndex: -1
-  }
-}
-
-export default injectSheet(styles)(Footer)
+export default Footer

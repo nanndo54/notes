@@ -1,0 +1,12 @@
+.base {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  height: 50px;
+  width: 100vw;
+  background: #222;
+  color: #eee;
+  z-index: -1;
+}

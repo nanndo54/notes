@@ -1,22 +1,12 @@
 import React from 'react'
-import injectSheet, { WithStylesProps } from 'react-jss'
+import styles from 'styles/Welcome.module.css'
 
-const Welcome: React.FC<WithStylesProps<typeof styles>> = ({ classes }) => {
+const Welcome = () => {
   return (
-    <div className={`${classes.base} unselectable`}>
-      <span className={classes.greeting}>Bienvenido de nuevo</span>
+    <div className={`${styles.base} unselectable`}>
+      <span className='greeting'>Bienvenido de nuevo</span>
     </div>
   )
 }
 
-const styles = {
-  base: {
-    margin: '40px 0 10px'
-  },
-  greeting: {
-    fontSize: 28,
-    fontWeight: 700
-  }
-}
-
-export default injectSheet(styles)(Welcome)
+export default Welcome

@@ -1,17 +1,16 @@
+import Footer from 'components/Footer'
+import Navbar from 'components/Navbar'
+import Main from 'pages/Landing'
 import Login from 'pages/Login'
-import Main from 'pages/Main'
-import Note from 'pages/Note'
+import Note from 'pages/NoteDetail'
 import Notes from 'pages/Notes'
 import React from 'react'
-import injectSheet, { WithStylesProps } from 'react-jss'
+import styles from 'styles/App.module.css'
 import { Route } from 'wouter'
 
-import Footer from './Footer'
-import Navbar from './Navbar'
-
-const App: React.FC<WithStylesProps<typeof styles>> = ({ classes }) => {
+const App = () => {
   return (
-    <div className={classes.base}>
+    <div className={styles.base}>
       <Navbar />
       <Route path='/'>
         <Main />
@@ -28,15 +27,4 @@ const App: React.FC<WithStylesProps<typeof styles>> = ({ classes }) => {
   )
 }
 
-const styles = {
-  base: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: '70px 40px 50px',
-    minHeight: 'calc(100vh - 120px)',
-    background: '#EEE'
-  }
-}
-
-export default injectSheet(styles)(App)
+export default App
