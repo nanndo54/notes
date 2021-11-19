@@ -5,7 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   build: {
-    outDir: path.resolve(__dirname, '../../docs/client'),
+    outDir: path.resolve(__dirname, '../../docs'),
     assetsDir: 'static'
   },
   css: {

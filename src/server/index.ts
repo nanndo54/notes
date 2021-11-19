@@ -16,11 +16,14 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-const __dirname = path.resolve()
-const dir = path.join(__dirname, './docs/client')
-app.use('/', express.static(dir))
-
 appRouter(app)
+
+const __dirname = path.resolve()
+const dir = path.join(__dirname, 'docs')
+const staticDir = path.join(dir, 'static')
+
+app.use('/static', express.static(staticDir))
+app.use('*', express.static(dir))
 
 async function listen() {
   const listener = await app.listen(app.get('port'))
