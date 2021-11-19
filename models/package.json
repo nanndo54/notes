@@ -1,0 +1,16 @@
+{
+  "name": "notes-models",
+  "version": "1.0.0",
+  "author": "pabloc54 <pablofernando54@outlook.com>",
+  "main": "src/index.ts",
+  "repository": "git@github.com:pabloc54/notes.git",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "4.3.5"
+  },
+  "pre-commit": "lint"
+}

@@ -1,0 +1,61 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "start",
+      "group": "none",
+      "problemMatcher": [],
+      "label": "npm: start",
+      "detail": "npm run start"
+    },
+    {
+      "type": "npm",
+      "script": "dev",
+      "group": "none",
+      "problemMatcher": [],
+      "label": "npm: dev",
+      "detail": "npm run dev"
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "npm: build",
+      "detail": "npm run build --workspace=client && npm run build --workspace=client"
+    },
+    {
+      "type": "npm",
+      "script": "build:client",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "npm: build:client",
+      "detail": "npm run build --workspace=client"
+    },
+    {
+      "type": "npm",
+      "script": "build:server",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "npm: build:server",
+      "detail": "npm run build --workspace=server"
+    },
+    {
+      "type": "npm",
+      "script": "build-watch:client",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "npm: build-watch:client",
+      "detail": "npm run build-watch --workspace=client"
+    },
+    {
+      "type": "npm",
+      "script": "build-watch:server",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "npm: build-watch:server",
+      "detail": "npm run build-watch --workspace=server"
+    }
+  ]
+}

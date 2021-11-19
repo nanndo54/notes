@@ -1,0 +1,26 @@
+{
+  "name": "notes-server",
+  "version": "1.0.0",
+  "author": "pabloc54 <pablofernando54@outlook.com>",
+  "main": "src/index.ts",
+  "repository": "git@github.com:pabloc54/notes.git",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "build-watch": "tsc --watch"
+  },
+  "dependencies": {
+    "notes-models": "1.0.0",
+    "dotenv": "10.0.0",
+    "express": "4.17.1",
+    "morgan": "1.10.0"
+  },
+  "devDependencies": {
+    "@types/babel__core": "7.1.16",
+    "@types/express": "4.17.13",
+    "@types/morgan": "1.9.3",
+    "@types/node": "16.11.8",
+    "typescript": "4.3.5"
+  }
+}
