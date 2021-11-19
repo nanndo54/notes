@@ -1,9 +1,9 @@
 import { createNote } from 'actions/noteActions'
-import { useAppDispatch, useAppSelector } from 'store'
-import styles from 'styles/NoteDetail.module.css'
 import Note from 'models/Note'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useAppDispatch, useAppSelector } from 'store'
+import styles from 'styles/NoteDetail.module.css'
 
 interface Props {
   id: number
