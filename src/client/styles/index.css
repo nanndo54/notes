@@ -1,0 +1,76 @@
+body {
+  padding-bottom: 50px;
+  margin: 0;
+}
+
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.control {
+  margin: 15px 0;
+}
+
+label {
+  margin: 0 0 5px 15px;
+  font-size: 12px;
+  color: #222;
+}
+
+input {
+  width: calc(100% - 32px);
+  padding: 10px 14px;
+  border: 2px solid #aaa;
+  border-radius: 20px 20px 0;
+  z-index: 1;
+}
+
+button {
+  width: 100%;
+  padding: 10px 7px;
+  border: 1px solid #444;
+  border-radius: 25px;
+}
+
+input,
+[contenteditable='true'] {
+  font-size: 13px;
+}
+
+input:focus,
+[contenteditable='true']:focus,
+button:focus {
+  outline: none !important;
+  border-color: #79c;
+  box-shadow: 0 0 4px #79c;
+}
+
+.error-input {
+  border-color: #f33;
+}
+
+.error-msg {
+  margin: 6px 0 8px 15px;
+  font-size: 12px;
+  color: red;
+  font-size: 10px;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+[contenteditable='true']:empty:before {
+  content: attr(aria-placeholder);
+  display: block;
+}
+
+[contenteditable='true']:empty:before {
+  content: attr(aria-placeholder);
+  display: block;
+}

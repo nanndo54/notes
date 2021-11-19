@@ -1,0 +1,6 @@
+PUT http://localhost:3000/notes/1
+
+{
+  "title":"test note updated",
+  "details":"updated details!"
+}

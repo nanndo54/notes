@@ -3,8 +3,10 @@ interface Note {
   id?: number
   /** title of the note */
   title: string
-  /** description of the note */
-  description?: string
+  /** details of the note */
+  details?: string
+  /** date of the note */
+  date?: Date
 }
 
 export default Note
