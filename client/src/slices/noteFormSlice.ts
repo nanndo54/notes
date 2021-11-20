@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Note } from 'notes-models'
+import { Note } from 'notes-types'
 
 const initialState: Note = {
   title: ''

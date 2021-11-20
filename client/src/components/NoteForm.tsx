@@ -1,4 +1,4 @@
-import { Note } from 'notes-models'
+import { Note } from 'notes-types'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { createNote } from 'services/notesServices'
 import { useAppDispatch } from 'store'
@@ -35,8 +35,8 @@ const NoteForm = () => {
           )}
         </div>
         <div className='control'>
-          <label htmlFor='details'>Description</label>
-          <input id='details' placeholder="Don't forget" {...register('details')} />
+          <label htmlFor='content'>Description</label>
+          <input id='content' placeholder="Don't forget" {...register('content')} />
         </div>
         <button>Create note</button>
       </form>

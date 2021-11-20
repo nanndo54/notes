@@ -3,8 +3,8 @@ interface Note {
   id?: number
   /** title of the note */
   title: string
-  /** details of the note */
-  details?: string
+  /** content of the note */
+  content?: string
   /** date of the note */
   date?: Date
 }

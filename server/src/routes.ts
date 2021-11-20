@@ -1,5 +1,5 @@
 import { Application } from 'express'
-import { Note } from 'notes-models'
+import { Note } from 'notes-types'
 
 const appRouter = (app: Application) => {
   let notes: Note[] = []

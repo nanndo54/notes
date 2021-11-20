@@ -1,5 +1,5 @@
 {
-  "name": "notes-models",
+  "name": "notes-types",
   "version": "1.0.0",
   "author": "pabloc54 <pablofernando54@outlook.com>",
   "main": "src/index.ts",

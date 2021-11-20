@@ -1,4 +1,4 @@
-import { Note } from 'notes-models'
+import { Note } from 'notes-types'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { createNote } from 'services/notesServices'
 import { useAppDispatch, useAppSelector } from 'store'
@@ -42,12 +42,12 @@ const NoteDetail = ({ id }: Props) => {
           )}
         </div>
         <div className='control'>
-          <label htmlFor='details'>Description</label>
+          <label htmlFor='content'>Description</label>
           <input
-            id='details'
+            id='content'
             placeholder="Don't forget"
-            value={note?.details}
-            {...register('details')}
+            value={note?.content}
+            {...register('content')}
           />
         </div>
         <button>Update note</button>

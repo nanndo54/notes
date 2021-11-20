@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { User } from 'notes-models'
+import { User } from 'notes-types'
 
 const initialState: User = {
   username: localStorage.getItem('user') || ''

@@ -3,5 +3,5 @@ Content-Type: application/json
 
 {
   "title":"test note",
-  "details":"no details"
+  "content":"no content"
 }

@@ -8,7 +8,7 @@
   "workspaces": [
     "client",
     "server",
-    "models"
+    "types"
   ],
   "scripts": {
     "start": "node dist",
@@ -24,6 +24,7 @@
     "lint": "npm run lint:format && npm run lint:fix"
   },
   "devDependencies": {
+    "@typescript-eslint/parser": "5.4.0",
     "eslint": "7.29.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-import": "2.22.1",
@@ -33,12 +34,15 @@
     "eslint-plugin-simple-import-sort": "7.0.0",
     "nodemon": "2.0.12",
     "pre-commit": "1.2.2",
-    "prettier": "2.3.2",
-    "@typescript-eslint/parser": "5.4.0"
+    "prettier": "2.3.2"
   },
   "engines": {
     "node": "16.x",
     "npm": "7.x"
   },
-  "pre-commit": "lint"
+  "pre-commit": "lint",
+  "dependencies": {
+    "mongoose": "^6.0.13",
+    "server": "^1.0.36"
+  }
 }
