@@ -1,6 +1,5 @@
 import Icon from 'components/Icon'
 import ICONS from 'constants/Icons'
-import React from 'react'
 import styles from 'styles/Landing.module.css'
 
 const Main = () => (

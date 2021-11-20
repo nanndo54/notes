@@ -10,6 +10,7 @@ export default defineConfig({
   },
   css: {
     modules: {
+      localsConvention: 'camelCaseOnly',
       generateScopedName: (name, filename, css) => {
         const file = path.basename(filename).split('.')[0]
         const index = css.indexOf(`.${name}`)

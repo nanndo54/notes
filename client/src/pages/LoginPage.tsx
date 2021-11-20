@@ -1,5 +1,4 @@
 import { User } from 'notes-models'
-import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { loginUser } from 'slices/userSlice'
 import { useAppDispatch, useAppSelector } from 'store'

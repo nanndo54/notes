@@ -1,7 +1,6 @@
 import { Note } from 'notes-models'
-import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { createNote } from 'slices/notesSlice'
+import { createNote } from 'services/notesServices'
 import { useAppDispatch, useAppSelector } from 'store'
 import styles from 'styles/NoteDetail.module.css'
 

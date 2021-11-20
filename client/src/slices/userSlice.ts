@@ -2,8 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { User } from 'notes-models'
 
 const initialState: User = {
-  username: '',
-  email: ''
+  username: localStorage.getItem('user') || ''
 }
 
 const userSlice = createSlice({
@@ -11,17 +10,17 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, action) => {
-      state = action.payload
-      save(state)
+      state.username = action.payload.username
+      save(state.username)
     },
     logoutUser: (state) => {
-      state = initialState
-      save(state)
+      state.username = ''
+      save(state.username)
     }
   }
 })
 
-const save = (user: User) => localStorage.setItem('user', JSON.stringify(user))
+const save = (user: string) => localStorage.setItem('user', user)
 
 export const { loginUser, logoutUser } = userSlice.actions
 

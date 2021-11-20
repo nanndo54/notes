@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Note } from 'notes-models'
-import {
-  createNoteService,
-  deleteNoteService,
-  getNotesService,
-  updateNoteService
-} from 'services/notesServices'
+import { createNote, deleteNote, getNotes, updateNote } from 'services/notesServices'
 
 const initialState: Note[] = []
 
@@ -13,41 +8,29 @@ const notesSlice = createSlice({
   name: 'notes',
   initialState,
   reducers: {
-    getNotes: (state) => {
-      getNotesService()
-        .then((notes) => {
-          state.concat(notes)
-        })
-        .catch(console.log)
-    },
-    createNote: (state, action: PayloadAction<Note>) => {
-      createNoteService(action.payload)
-        .then(() => {
-          state.push(action.payload)
-        })
-        .catch(console.log)
-    },
-    deleteNote: (state, action: PayloadAction<Note>) => {
-      deleteNoteService(action.payload)
-        .then(() => {
-          state.splice(state.indexOf(action.payload), 1)
-        })
-        .catch(console.log)
-    },
-    updateNote: (state, action: PayloadAction<Note>) => {
-      updateNoteService(action.payload)
-        .then(() => {
-          state[state.indexOf(action.payload)] = action.payload
-        })
-        .catch(console.log)
-    },
     clearNotes: (state) => {
       state.splice(0, state.length)
+    }
+  },
+  extraReducers: {
+    [createNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
+      state.push(payload)
+    },
+    [getNotes.fulfilled.toString()]: (state, { payload }: PayloadAction<Note[]>) => {
+      state.push(...payload)
+    },
+    [getNotes.rejected.toString()]: (state) => {
+      state.splice(0, state.length)
+    },
+    [deleteNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
+      state.splice(state.indexOf(payload), 1)
+    },
+    [updateNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
+      state[state.indexOf(payload)] = payload
     }
   }
 })
 
-export const { getNotes, createNote, deleteNote, updateNote, clearNotes } =
-  notesSlice.actions
+export const { clearNotes } = notesSlice.actions
 
 export default notesSlice.reducer

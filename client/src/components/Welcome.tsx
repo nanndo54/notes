@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from 'styles/Welcome.module.css'
 
 const Welcome = () => (

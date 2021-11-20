@@ -1,6 +1,7 @@
 import Note from 'components/Note'
-import React, { useEffect } from 'react'
-import { clearNotes, getNotes } from 'slices/notesSlice'
+import { useEffect } from 'react'
+import { getNotes } from 'services/notesServices'
+import { clearNotes } from 'slices/notesSlice'
 import { useAppDispatch, useAppSelector } from 'store'
 import styles from 'styles/NoteGrid.module.css'
 
