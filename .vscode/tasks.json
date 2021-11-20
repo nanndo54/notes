@@ -11,7 +11,15 @@
     },
     {
       "type": "npm",
-      "script": "dev",
+      "script": "dev:client",
+      "group": "none",
+      "problemMatcher": [],
+      "label": "npm: dev",
+      "detail": "npm run dev --workspace=client"
+    },
+    {
+      "type": "npm",
+      "script": "dev:server",
       "group": "none",
       "problemMatcher": [],
       "label": "npm: dev",

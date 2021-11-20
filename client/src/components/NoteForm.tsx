@@ -1,7 +1,7 @@
-import { createNote } from 'actions/noteActions'
 import { Note } from 'notes-models'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { addNote } from 'slices/notesSlice'
 import { useAppDispatch } from 'store'
 import styles from 'styles/NoteForm.module.css'
 
@@ -16,7 +16,7 @@ const NoteForm = () => {
   const dispatch = useAppDispatch()
 
   const onSubmit: SubmitHandler<Note> = (note) => {
-    dispatch(createNote(note))
+    dispatch(addNote(note))
     reset()
   }
 
@@ -24,9 +24,7 @@ const NoteForm = () => {
     <div className={styles.base}>
       <form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
         <div className='control'>
-          <label htmlFor='title' className={'unselectable'}>
-            Title
-          </label>
+          <label htmlFor='title'>Title</label>
           <input
             id='title'
             placeholder='Walk the dog 🐕'
@@ -38,9 +36,7 @@ const NoteForm = () => {
           )}
         </div>
         <div className='control'>
-          <label htmlFor='details' className={'unselectable'}>
-            Description
-          </label>
+          <label htmlFor='details'>Description</label>
           <input id='details' placeholder="Don't forget" {...register('details')} />
         </div>
         <button>Create note</button>

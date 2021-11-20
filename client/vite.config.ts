@@ -19,5 +19,8 @@ export default defineConfig({
       }
     }
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.css']
+  },
   plugins: [react(), tsconfigPaths()]
 })

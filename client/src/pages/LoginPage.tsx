@@ -1,7 +1,7 @@
-import { loginUser } from 'actions/userActions'
 import { User } from 'notes-models'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { loginUser } from 'slices/userSlice'
 import { useAppDispatch, useAppSelector } from 'store'
 import styles from 'styles/Login.module.css'
 import { Redirect } from 'wouter'
@@ -12,7 +12,6 @@ interface IForm extends User {
 
 const Login = () => {
   const user = useAppSelector((state) => state.user)
-  console.log(user)
 
   const {
     handleSubmit,
@@ -26,18 +25,13 @@ const Login = () => {
     dispatch(loginUser(user))
   }
 
-  return user.username && user.username !== 'none' ? (
-    <Redirect to='/' />
-  ) : (
+  return user.username === '' ? (
     <div className={styles.base}>
       <form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
         <div className='control'>
-          <label htmlFor='username' className={'unselectable'}>
-            Username
-          </label>
+          <label htmlFor='username'>Username</label>
           <input
             id='username'
-            placeholder='Walk the dog 🐕'
             className={errors.username?.type === 'required' ? 'error-input' : ''}
             {...register('username', { required: true })}
           />
@@ -46,19 +40,14 @@ const Login = () => {
           )}
         </div>
         <div className='control'>
-          <label htmlFor='password' className={'unselectable'}>
-            Password
-          </label>
-          <input
-            id='password'
-            placeholder="Don't forget"
-            {...register('password')}
-            type='password'
-          />
+          <label htmlFor='password'>Password</label>
+          <input id='password' {...register('password')} type='password' />
         </div>
         <button>Log in</button>
       </form>
     </div>
+  ) : (
+    <Redirect to='/' />
   )
 }
 

@@ -1,37 +1,24 @@
-import { Dispatch } from '@reduxjs/toolkit'
-import { Note, User } from 'notes-models'
+import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import noteFormReducer from 'reducers/noteFormReducer'
-import noteReducer from 'reducers/noteReducer'
-import userReducer from 'reducers/userReducer'
-import { combineReducers, createStore } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-
-const initialState = {
-  notes: (JSON.parse(localStorage.getItem('notes') as string) || []) as Note[],
-  noteForm: (JSON.parse(localStorage.getItem('note-form') as string) || {}) as Note,
-  user: (JSON.parse(localStorage.getItem('note-form') as string) || {}) as User
-}
+import { combineReducers } from 'redux'
+import noteFormSlice from 'slices/noteFormSlice'
+import notesSlice from 'slices/notesSlice'
+import userSlice from 'slices/userSlice'
 
 const reducer = combineReducers({
-  notes: noteReducer,
-  noteForm: noteFormReducer,
-  user: userReducer
+  noteForm: noteFormSlice,
+  notes: notesSlice,
+  user: userSlice
 })
 
-const store = createStore(reducer, initialState, composeWithDevTools())
+const store = configureStore({
+  reducer
+})
 
-export default store
-
-type RootState = ReturnType<typeof store.getState>
-
-interface Action {
-  type: string
-  payload: any
-}
-
-type AppDispatch = Dispatch<Action>
-
+export type RootState = ReturnType<typeof reducer>
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
+export type AppDispatch = typeof store.dispatch
 export const useAppDispatch = () => useDispatch<AppDispatch>()
+
+export default store
