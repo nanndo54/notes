@@ -3,67 +3,66 @@
   "tasks": [
     {
       "type": "npm",
+      "script": "install",
+      "group": "none",
+      "problemMatcher": [],
+      "label": "npm: install"
+    },
+    {
+      "type": "npm",
       "script": "start",
       "group": "none",
       "problemMatcher": [],
-      "label": "npm: start",
-      "detail": "npm run start"
+      "label": "npm: start"
     },
     {
       "type": "npm",
       "script": "dev:client",
       "group": "none",
       "problemMatcher": [],
-      "label": "npm: dev",
-      "detail": "npm run dev --workspace=client"
+      "label": "npm: dev client"
     },
     {
       "type": "npm",
       "script": "dev:server",
       "group": "none",
       "problemMatcher": [],
-      "label": "npm: dev",
-      "detail": "npm run dev"
+      "label": "npm: dev server"
     },
     {
       "type": "npm",
       "script": "build",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: build",
-      "detail": "npm run build --workspace=client && npm run build --workspace=client"
+      "label": "npm: build"
     },
     {
       "type": "npm",
       "script": "build:client",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: build:client",
-      "detail": "npm run build --workspace=client"
+      "label": "npm: build:client"
     },
     {
       "type": "npm",
       "script": "build:server",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: build:server",
-      "detail": "npm run build --workspace=server"
+      "label": "npm: build:server"
     },
     {
       "type": "npm",
       "script": "build-watch:client",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: build-watch:client",
-      "detail": "npm run build-watch --workspace=client"
+      "label": "npm: build-watch:client"
     },
     {
       "type": "npm",
       "script": "build-watch:server",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: build-watch:server",
-      "detail": "npm run build-watch --workspace=server"
+      "label": "npm: build-watch:server"
     }
   ]
 }

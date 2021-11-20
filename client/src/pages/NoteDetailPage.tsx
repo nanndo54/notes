@@ -1,7 +1,7 @@
 import { Note } from 'notes-models'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { addNote } from 'slices/notesSlice'
+import { createNote } from 'slices/notesSlice'
 import { useAppDispatch, useAppSelector } from 'store'
 import styles from 'styles/NoteDetail.module.css'
 
@@ -22,7 +22,7 @@ const NoteDetail = ({ id }: Props) => {
   const note = useAppSelector((state) => state.notes).find((note) => note.id === id)
 
   const onSubmit: SubmitHandler<Note> = (note) => {
-    dispatch(addNote(note))
+    dispatch(createNote(note))
     reset()
   }
 

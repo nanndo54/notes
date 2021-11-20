@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "start": "node dist",
-    "dev": "nodemon dist",
+    "dev:client": "npm run dev --workspace=client",
+    "dev:server": "nodemon dist",
     "build": "npm run build --workspace=client && npm run build --workspace=server",
     "build:client": "npm run build --workspace=client",
     "build:server": "npm run build --workspace=server",
