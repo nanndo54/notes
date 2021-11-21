@@ -2,23 +2,19 @@ import styles from 'styles/Icon.module.css'
 
 interface Props {
   name: string
-  size?: number
   color?: string
+  className?: string
 }
 
-const Icon = ({ name, size = 20, color = 'unset' }: Props) => {
-  const pathStyle = { fill: color }
-
-  return (
-    <svg
-      className={styles.svg}
-      height={`${size}px`}
-      width={`${size}px`}
-      viewBox='0 0 1024 1024'
-    >
-      <path d={name} style={pathStyle} />
-    </svg>
-  )
-}
+const Icon = ({ name, color = 'unset', className = '' }: Props) => (
+  <svg
+    className={`${styles.svg} ${className}`}
+    height='100%'
+    width='100%'
+    viewBox='0 0 1024 1024'
+  >
+    <path d={name} style={{ fill: color }} />
+  </svg>
+)
 
 export default Icon

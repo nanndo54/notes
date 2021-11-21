@@ -1,9 +1,9 @@
 import Footer from 'components/Footer'
 import Navbar from 'components/Navbar'
-import Landing from 'pages/LandingPage'
-import Login from 'pages/LoginPage'
-import NoteDetail from 'pages/NoteDetailPage'
-import Notes from 'pages/NotesPage'
+import LandingPage from 'pages/LandingPage'
+import LoginPage from 'pages/LoginPage'
+import NoteDetailPage from 'pages/NoteDetailPage'
+import NotesPage from 'pages/NotesPage'
 import { useAppSelector } from 'store'
 import styles from 'styles/App.module.css'
 import { Route } from 'wouter'
@@ -14,10 +14,12 @@ const App = () => {
 
   return (
     <div className={styles.base}>
-      <Navbar />
-      <Route path='/' component={isUserLoggedIn ? Notes : Landing} />
-      <Route path='/login' component={Login} />
-      <Route path='/note/:id'>{({ id }) => <NoteDetail id={Number(id)} />}</Route>
+      <div className={styles.content}>
+        <Navbar />
+        <Route path='/' component={isUserLoggedIn ? NotesPage : LandingPage} />
+        <Route path='/login' component={LoginPage} />
+        <Route path='/note/:id'>{({ id }) => <NoteDetailPage id={Number(id)} />}</Route>
+      </div>
       <Footer />
     </div>
   )

@@ -1,10 +1,8 @@
 body {
-  padding-bottom: 50px;
   margin: 0;
-}
 
-* {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
+    Arial, sans-serif;
 }
 
 .control {
@@ -22,14 +20,16 @@ input {
   padding: 10px 14px;
   border: 2px solid #aaa;
   border-radius: 20px 20px 0;
-  z-index: 1;
 }
 
 button {
-  width: 100%;
-  padding: 10px 7px;
-  border: 1px solid #444;
+  height: 100%;
+  display: inline-block;
+  padding: 10px;
+  border: 2px solid #bbb;
+  background-color: #ddd;
   border-radius: 25px;
+  cursor: pointer;
 }
 
 input,
@@ -42,7 +42,7 @@ input:focus,
 button:focus {
   outline: none !important;
   border-color: #79c;
-  box-shadow: 0 0 4px #79c;
+  box-shadow: 0 0 3px #8ab;
 }
 
 .error-input {

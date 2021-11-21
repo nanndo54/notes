@@ -2,7 +2,7 @@ import { User } from 'notes-types'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { loginUser } from 'slices/userSlice'
 import { useAppDispatch, useAppSelector } from 'store'
-import styles from 'styles/Login.module.css'
+import styles from 'styles/LoginPage.module.css'
 import { Redirect } from 'wouter'
 
 interface IForm extends User {

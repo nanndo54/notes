@@ -7,27 +7,32 @@ const NOTES_API_URL = `${API_URL}/notes`
 
 const createNote = createAsyncThunk('notes/createNote', async (note: Note) => {
   const response = await axios.post(NOTES_API_URL, note)
-  return response.status === 201
+  if (response.status !== 201) throw new Error('Error creating note')
+  return response.data
 })
 
 const deleteNote = createAsyncThunk('notes/deleteNote', async (note: Note) => {
   const response = await axios.delete(`${NOTES_API_URL}/${note.id}`)
-  return response.status === 200
+  if (response.status !== 200) throw new Error('Error deleting note')
+  return response.data
 })
 
 const getNotes = createAsyncThunk('notes/getNotes', async () => {
   const response = await axios.get(NOTES_API_URL)
+  if (response.status !== 200) throw new Error('Error getting notes')
   return response.data
 })
 
 const getNote = createAsyncThunk('notes/getNote', async (id: number) => {
   const response = await axios.get(`${NOTES_API_URL}/${id}`)
+  if (response.status !== 200) throw new Error('Error getting note')
   return response.data
 })
 
 const updateNote = createAsyncThunk('notes/updateNote', async (note: Note) => {
   const response = await axios.put(`${NOTES_API_URL}/${note.id}`, note)
-  return response.status === 200
+  if (response.status !== 200) throw new Error('Error updating note')
+  return response.data
 })
 
 export { createNote, deleteNote, getNote, getNotes, updateNote }

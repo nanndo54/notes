@@ -2,7 +2,7 @@ import { Note } from 'notes-types'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { createNote } from 'services/notesServices'
 import { useAppDispatch, useAppSelector } from 'store'
-import styles from 'styles/NoteDetail.module.css'
+import styles from 'styles/NoteDetailPage.module.css'
 
 interface Props {
   id: number

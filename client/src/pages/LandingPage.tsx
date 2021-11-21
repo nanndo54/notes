@@ -1,11 +1,12 @@
-import Icon from 'components/Icon'
-import ICONS from 'constants/Icons'
-import styles from 'styles/Landing.module.css'
+import styles from 'styles/LandingPage.module.css'
+import { Link } from 'wouter'
 
 const Main = () => (
   <div className={styles.base}>
-    <Icon name={ICONS.FACEBOOK} />
-    <Icon name={ICONS.GOOGLE} />
+    <p>Notes is the best app ever.</p>
+    <Link to='/about'>About notes</Link>
+    <Link to='/login'>Sign in</Link>
+    <Link to='/signup'>Sign up</Link>
   </div>
 )
 
