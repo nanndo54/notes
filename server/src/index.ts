@@ -1,14 +1,14 @@
+import './database.js'
+
 import cors from 'cors'
-import dotenv from 'dotenv'
 import express from 'express'
 import { Application } from 'express'
+import moongose from 'mongoose'
 import morgan from 'morgan'
 import { AddressInfo } from 'net'
 import path from 'path'
 
-import appRouter from './routes.js'
-
-dotenv.config()
+import appRouter from './routes/index.js'
 
 const app: Application = express()
 app.set('port', process.env.PORT || 3000)
@@ -33,13 +33,12 @@ async function listen() {
 
   console.log(`Server running on http://${address}:${port}`)
 
-  function close(signal: String) {
+  async function close(signal: String) {
     console.info(`${signal} signal received`)
-    console.log('Closing http server')
-    listener.close((err: Error | undefined) => {
-      console.info('Http server closed')
-      process.exit(err ? 1 : 0)
-    })
+    console.info('Closing database')
+    await moongose.connection.close()
+    console.info('Closing http server')
+    listener.close((err: Error | undefined) => process.exit(err ? 1 : 0))
   }
 
   process.on('SIGTERM', () => {
