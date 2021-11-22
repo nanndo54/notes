@@ -13,7 +13,7 @@
       "script": "start",
       "group": "none",
       "problemMatcher": [],
-      "label": "npm: start"
+      "label": "npm: start server"
     },
     {
       "type": "npm",
@@ -34,35 +34,35 @@
       "script": "build",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: build"
+      "label": "npm: build all"
     },
     {
       "type": "npm",
       "script": "build:client",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: build:client"
+      "label": "npm: build client"
     },
     {
       "type": "npm",
       "script": "build:server",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: build:server"
+      "label": "npm: build server"
     },
     {
       "type": "npm",
-      "script": "build-watch:client",
+      "script": "build-watch client",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: build-watch:client"
+      "label": "npm: build-watch client"
     },
     {
       "type": "npm",
       "script": "build-watch:server",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: build-watch:server"
+      "label": "npm: build-watch server"
     }
   ]
 }

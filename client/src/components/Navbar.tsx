@@ -1,58 +1,29 @@
+import Button from 'components/Button'
 import Icon from 'components/Icon'
+import NavbarMenu from 'components/NavbarMenu'
 import ICONS from 'constants/Icons'
-import { useState } from 'react'
-import { logoutUser } from 'slices/userSlice'
-import { useAppDispatch, useAppSelector } from 'store'
+import useMenu from 'hooks/useMenu'
+import useUser from 'hooks/useUser'
 import styles from 'styles/Navbar.module.css'
 import { Link } from 'wouter'
 
 const Navbar = () => {
-  const user = useAppSelector((state) => state.user)
-  const isUserLoggedIn = user.username !== ''
-
-  const [menuVisible, setMenuVisible] = useState(false)
-
-  const handleToggleMenu = () => {
-    setMenuVisible(!menuVisible)
-  }
+  const { isUserLoggedIn } = useUser()
+  const { handleToggleMenu } = useMenu()
 
   return (
-    <div className={`${styles.base} ${isUserLoggedIn ? styles.loggedIn : ''}`}>
-      <NavbarMenu show={menuVisible} />
+    <nav className={`${styles.base} ${isUserLoggedIn ? styles.loggedIn : ''}`}>
+      <NavbarMenu />
       <div className={styles.navbar}>
         <div className={styles.logo}>
-          <Link to='/'>Logo</Link>
+          <Link to='/'>notes</Link>
         </div>
         <div className={styles.search}>search</div>
-        <button className={styles.dropdownButton} onClick={handleToggleMenu}>
+        <Button variant='transparent' onClick={handleToggleMenu}>
           {<Icon name={ICONS.MENU} />}
-        </button>
+        </Button>
       </div>
-    </div>
-  )
-}
-
-const NavbarMenu = ({ show = false }) => {
-  const user = useAppSelector((state) => state.user)
-  const userIsLoggedIn = user.username !== ''
-
-  const dispatch = useAppDispatch()
-
-  const handleLogout = () => {
-    dispatch(logoutUser())
-  }
-
-  return (
-    <div className={`${styles.menu} ${show ? styles.show : ''}`}>
-      {userIsLoggedIn ? (
-        <button onClick={handleLogout}>log out</button>
-      ) : (
-        <Link to='/login'>log in</Link>
-      )}
-      <Link to='/'>home</Link>
-      <Link to='/about'>about</Link>
-      <Link to='/contact'>contact</Link>
-    </div>
+    </nav>
   )
 }
 

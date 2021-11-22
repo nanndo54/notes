@@ -14,9 +14,10 @@ const notesSlice = createSlice({
   },
   extraReducers: {
     [createNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
-      state.push(payload)
+      state.unshift(payload)
     },
     [getNotes.fulfilled.toString()]: (state, { payload }: PayloadAction<Note[]>) => {
+      state.splice(0, state.length)
       state.push(...payload)
     },
     [getNotes.rejected.toString()]: (state) => {

@@ -1,33 +1,38 @@
+import Button from 'components/Button'
+import useUser from 'hooks/useUser'
 import { User } from 'notes-types'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { loginUser } from 'slices/userSlice'
-import { useAppDispatch, useAppSelector } from 'store'
+import { useAppDispatch } from 'store'
 import styles from 'styles/LoginPage.module.css'
 import { Redirect } from 'wouter'
 
-interface IForm extends User {
+interface Form extends User {
   password: string
 }
 
 const Login = () => {
-  const user = useAppSelector((state) => state.user)
-
   const {
     handleSubmit,
     formState: { errors },
     register
-  } = useForm<IForm>()
+  } = useForm<Form>()
+
+  const { isUserLoggedIn } = useUser()
 
   const dispatch = useAppDispatch()
 
-  const onSubmit: SubmitHandler<IForm> = (user) => {
+  const handleLogin: SubmitHandler<Form> = (user) => {
     dispatch(loginUser(user))
   }
 
-  return user.username === '' ? (
+  return isUserLoggedIn ? (
+    <Redirect to='/' />
+  ) : (
     <div className={styles.base}>
-      <form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-        <div className='control'>
+      <form onSubmit={handleSubmit(handleLogin)} autoComplete='off'>
+        <h2>Login</h2>
+        <div>
           <label htmlFor='username'>Username</label>
           <input
             id='username'
@@ -35,18 +40,23 @@ const Login = () => {
             {...register('username', { required: true })}
           />
           {errors.username?.type === 'required' && (
-            <div className='error-msg'>First name is required</div>
+            <div className='error'>First name is required</div>
           )}
         </div>
-        <div className='control'>
+        <div>
           <label htmlFor='password'>Password</label>
-          <input id='password' {...register('password')} type='password' />
+          <input
+            id='password'
+            {...register('password', { required: true })}
+            type='password'
+          />
+          {errors.password?.type === 'required' && (
+            <div className='error'>Password is required</div>
+          )}
         </div>
-        <button>Log in</button>
+        <Button variant='primary'>Log in</Button>
       </form>
     </div>
-  ) : (
-    <Redirect to='/' />
   )
 }
 

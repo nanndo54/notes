@@ -1,13 +1,14 @@
 import NoteForm from 'components/NoteForm'
 import NoteGrid from 'components/NoteGrid'
 import Welcome from 'components/Welcome'
+import styles from 'styles/NotesPage.module.css'
 
-const Notes = () => (
-  <>
+const NotesPage = () => (
+  <div className={styles.base}>
     <Welcome />
     <NoteForm />
     <NoteGrid />
-  </>
+  </div>
 )
 
-export default Notes
+export default NotesPage

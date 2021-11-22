@@ -6,6 +6,7 @@ import NoteModel from '../models/NoteModel.js'
 const notesRouter = (app: Application) => {
   app.get('/api/notes', (req, res) => {
     NoteModel.find({})
+      .sort({ date: -1 })
       .then((notes) => res.send(notes))
       .catch((err) => res.status(400).send(err))
   })

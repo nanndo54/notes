@@ -1,0 +1,30 @@
+.base {
+  padding: 10px 20px;
+  height: 100%;
+  border: 2px solid #bbb;
+  background-color: #ddd;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 3px 1px #bbb;
+  text-align: left;
+}
+
+.base.primary {
+  background-color: #4cd350;
+  border-color: #3a9c3d;
+  color: #fff;
+}
+
+.base.danger {
+  background-color: #e23b3b;
+  border-color: #922525;
+  color: #fff;
+}
+
+.base.transparent {
+  padding: 8px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}

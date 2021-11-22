@@ -5,7 +5,7 @@ const { model, Schema } = moongose
 
 const schema = new Schema<Note>({
   title: { type: String, required: true },
-  content: { type: String, required: true },
+  content: { type: String },
   date: { type: Date, default: Date.now }
 })
 

@@ -1,23 +1,21 @@
 .base {
-  flex-direction: column;
-  width: calc(100% - 53px);
-  margin: 5px;
+  width: 100%;
+  height: fit-content;
   padding: 20px;
+  box-sizing: border-box;
+
   background: #449;
-  border-bottom: 5px solid #333;
-  border-right: 3px solid #333;
-  border-radius: 8px;
+
+  box-shadow: 2px 3px 0px 2px #333;
+  border-radius: 25px;
   text-decoration: none;
 }
 
-.base:hover {
-  cursor: pointer;
-}
-
 .title {
-  padding: 5px 0;
-  font-size: 19px;
+  font-size: 1.4rem;
   color: rgb(247, 187, 187);
+
+  margin-bottom: 1rem;
 
   overflow: hidden;
   display: -webkit-box;
@@ -26,13 +24,13 @@
 }
 
 .content {
-  padding: 5px 0;
   width: 100%;
   color: #ccc;
-  font-size: 14px;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
 
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }

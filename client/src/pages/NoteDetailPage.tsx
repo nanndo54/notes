@@ -1,11 +1,11 @@
+import Button from 'components/Button'
+import useNote from 'hooks/useNote'
 import { Note } from 'notes-types'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { createNote } from 'services/notesServices'
-import { useAppDispatch, useAppSelector } from 'store'
 import styles from 'styles/NoteDetailPage.module.css'
 
 interface Props {
-  id: number
+  id: string
 }
 
 const NoteDetail = ({ id }: Props) => {
@@ -16,24 +16,24 @@ const NoteDetail = ({ id }: Props) => {
     reset
   } = useForm<Note>()
 
-  const dispatch = useAppDispatch()
+  const { handleGetNote, handleUpdateNote } = useNote()
 
-  const note = useAppSelector((state) => state.notes).find((note) => note.id === id)
+  const note = handleGetNote(id)
 
-  const onSubmit: SubmitHandler<Note> = (note) => {
-    dispatch(createNote(note))
+  const handleSubmitForm: SubmitHandler<Note> = (note) => {
+    handleUpdateNote(note)
     reset()
   }
 
   return (
     <div className={styles.base}>
-      <form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+      <form onSubmit={handleSubmit(handleSubmitForm)} autoComplete='off'>
         <div className='control'>
           <label htmlFor='title'>Title</label>
           <input
             id='title'
-            placeholder='Walk the dog 🐕'
-            value={note?.title}
+            placeholder={note?.title}
+            defaultValue={note?.title}
             className={errors.title?.type === 'required' ? 'error-input' : ''}
             {...register('title', { required: true })}
           />
@@ -43,14 +43,9 @@ const NoteDetail = ({ id }: Props) => {
         </div>
         <div className='control'>
           <label htmlFor='content'>Description</label>
-          <input
-            id='content'
-            placeholder="Don't forget"
-            value={note?.content}
-            {...register('content')}
-          />
+          <input id='content' defaultValue={note?.content} {...register('content')} />
         </div>
-        <button>Update note</button>
+        <Button variant='primary'>Update note</Button>
       </form>
     </div>
   )

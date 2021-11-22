@@ -1,0 +1,52 @@
+.base {
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  border-radius: 25px;
+  box-shadow: 4px 3px 4px #aaa;
+
+  width: 200px;
+  padding: 5px 10px 20px 30px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 3;
+}
+
+.base.show {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.base a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 5px 0;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.close-button {
+  align-self: flex-end;
+}
+
+.base a svg {
+  width: 15px;
+}
+
+@media (max-width: 600px) {
+  .base {
+    width: 100%;
+    box-shadow: 0px 4px 7px #aaa;
+  }
+}

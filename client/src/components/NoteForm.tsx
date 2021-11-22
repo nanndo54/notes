@@ -1,7 +1,8 @@
+import Button from 'components/Button'
+import { getPlaceholder } from 'constants/placeholders'
+import useNote from 'hooks/useNote'
 import { Note } from 'notes-types'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { createNote } from 'services/notesServices'
-import { useAppDispatch } from 'store'
 import styles from 'styles/NoteForm.module.css'
 
 const NoteForm = () => {
@@ -12,21 +13,23 @@ const NoteForm = () => {
     reset
   } = useForm<Note>()
 
-  const dispatch = useAppDispatch()
+  const placeholder = getPlaceholder()
 
-  const onSubmit: SubmitHandler<Note> = (note) => {
-    dispatch(createNote(note))
+  const { handleCreateNote } = useNote()
+
+  const handleSubmitForm: SubmitHandler<Note> = (note) => {
+    handleCreateNote(note)
     reset()
   }
 
   return (
     <div className={styles.base}>
-      <form onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-        <div className='control'>
+      <form onSubmit={handleSubmit(handleSubmitForm)} autoComplete='off'>
+        <div>
           <label htmlFor='title'>Title</label>
           <input
             id='title'
-            placeholder='Walk the dog 🐕'
+            placeholder={placeholder}
             className={errors.title?.type === 'required' ? 'error-input' : ''}
             {...register('title', { required: true })}
           />
@@ -34,11 +37,11 @@ const NoteForm = () => {
             <div className='error-msg'>First name is required</div>
           )}
         </div>
-        <div className='control'>
+        <div>
           <label htmlFor='content'>Description</label>
-          <input id='content' placeholder="Don't forget" {...register('content')} />
+          <input id='content' {...register('content')} />
         </div>
-        <button>Create note</button>
+        <Button variant='primary'>Create note</Button>
       </form>
     </div>
   )

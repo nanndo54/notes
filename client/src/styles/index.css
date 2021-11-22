@@ -1,35 +1,71 @@
-body {
-  margin: 0;
+:root {
+  font-size: 16px;
+}
 
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
     Arial, sans-serif;
 }
 
-.control {
-  margin: 15px 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  margin-left: 20px;
 }
 
 label {
-  margin: 0 0 5px 15px;
-  font-size: 12px;
+  font-size: 0.9rem;
   color: #222;
 }
 
-input {
-  width: calc(100% - 32px);
-  padding: 10px 14px;
-  border: 2px solid #aaa;
-  border-radius: 20px 20px 0;
+h1 {
+  font-size: 2rem;
 }
 
-button {
-  height: 100%;
-  display: inline-block;
-  padding: 10px;
-  border: 2px solid #bbb;
-  background-color: #ddd;
-  border-radius: 25px;
-  cursor: pointer;
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: 0.8rem;
+}
+
+h6 {
+  font-size: 0.7rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+input {
+  display: block;
+  font-size: 2rem;
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: 2px solid #aaa;
 }
 
 input,
@@ -45,15 +81,14 @@ button:focus {
   box-shadow: 0 0 3px #8ab;
 }
 
-.error-input {
-  border-color: #f33;
+div.error {
+  margin: 8px 0 0 20px;
+  font-size: 0.8rem;
+  color: rgb(236, 49, 49);
 }
 
-.error-msg {
-  margin: 6px 0 8px 15px;
-  font-size: 12px;
-  color: red;
-  font-size: 10px;
+.error-input {
+  border-color: #f33;
 }
 
 .unselectable {

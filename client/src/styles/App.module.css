@@ -7,21 +7,20 @@
 
   margin-bottom: 100px;
   min-height: 100vh;
-  box-sizing: border-box;
-}
-
-.base,
-.base > * {
-  border: 1px solid red;
+  padding: 50px;
 }
 
 .content {
-  width: 100%;
-  box-sizing: border-box;
+  width: 500px;
+  margin: 40px 0;
 }
 
 @media (max-width: 600px) {
   .base {
     padding: 50px 20px;
+  }
+
+  .content {
+    width: 100%;
   }
 }

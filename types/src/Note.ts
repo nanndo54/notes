@@ -1,6 +1,6 @@
 interface Note {
   /** unique id of the note */
-  id?: number
+  id?: string
   /** title of the note */
   title: string
   /** content of the note */

@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { combineReducers } from 'redux'
-import noteFormSlice from 'slices/noteFormSlice'
+import appSlice from 'slices/appSlice'
 import notesSlice from 'slices/notesSlice'
 import userSlice from 'slices/userSlice'
 
 const reducer = combineReducers({
-  noteForm: noteFormSlice,
+  app: appSlice,
   notes: notesSlice,
   user: userSlice
 })
