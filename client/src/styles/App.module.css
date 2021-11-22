@@ -12,7 +12,7 @@
 
 .content {
   width: 500px;
-  margin: 40px 0;
+  margin: 50px 0;
 }
 
 @media (max-width: 600px) {
@@ -21,6 +21,6 @@
   }
 
   .content {
-    width: 100%;
+    width: 90%;
   }
 }

@@ -20,14 +20,12 @@ const notesSlice = createSlice({
       state.splice(0, state.length)
       state.push(...payload)
     },
-    [getNotes.rejected.toString()]: (state) => {
-      state.splice(0, state.length)
-    },
     [deleteNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
       state.splice(state.indexOf(payload), 1)
     },
     [updateNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
-      state[state.indexOf(payload)] = payload
+      const index = state.findIndex((note) => note.id === payload.id)
+      state[index] = payload
     }
   }
 })

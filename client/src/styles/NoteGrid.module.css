@@ -1,6 +1,6 @@
 .base {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 230px);
+  grid-template-columns: repeat(2, 1fr);
   justify-content: center;
-  gap: 35px 20px;
+  gap: 40px 25px;
 }

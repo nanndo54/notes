@@ -16,7 +16,6 @@ function useNote() {
   }
 
   const handleUpdateNote = (note: Note) => {
-    console.log(note)
     dispatch(updateNote(note))
   }
 

@@ -34,11 +34,11 @@ const NoteForm = () => {
             {...register('title', { required: true })}
           />
           {errors.title?.type === 'required' && (
-            <div className='error-msg'>First name is required</div>
+            <div className='error-msg'>Title is required</div>
           )}
         </div>
         <div>
-          <label htmlFor='content'>Description</label>
+          <label htmlFor='content'>Content</label>
           <input id='content' {...register('content')} />
         </div>
         <Button variant='primary'>Create note</Button>
