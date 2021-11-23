@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Note = ({ note: { id, title, content } }: Props) => (
-  <Link className={`${styles.base} unselectable`} to={`/note/${id}`}>
+  <Link className={`${styles.base} unselectable`} to={`/notes/${id}`}>
     <div className={styles.title}>{title}</div>
     <div className={styles.content}>{content}</div>
   </Link>

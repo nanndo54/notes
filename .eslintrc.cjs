@@ -34,6 +34,7 @@ module.exports = {
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     'jsx-a11y/anchor-is-valid': 'off',
-    'jsx-a11y/no-static-element-interactions': 'off'
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'react/display-name': 'off'
   }
 }

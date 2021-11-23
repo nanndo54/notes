@@ -10,17 +10,8 @@
   padding: 50px;
 }
 
-.content {
-  width: 500px;
-  margin: 50px 0;
-}
-
 @media (max-width: 600px) {
   .base {
     padding: 50px 20px;
-  }
-
-  .content {
-    width: 90%;
   }
 }

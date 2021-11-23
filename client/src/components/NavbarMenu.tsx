@@ -1,6 +1,6 @@
 import Button from 'components/Button'
 import Icon from 'components/Icon'
-import ICONS from 'constants/Icons'
+import ICONS from 'constants/icons'
 import useMenu from 'hooks/useMenu'
 import useOutsideAlerter from 'hooks/useOutsideAleter'
 import useUser from 'hooks/useUser'

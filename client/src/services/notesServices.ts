@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import API_URL from 'constants/Api'
+import API_URL from 'constants/api'
 import { Note } from 'notes-types'
 
 const NOTES_API_URL = `${API_URL}/notes`
