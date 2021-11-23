@@ -9,7 +9,7 @@ interface Props {
   id: string
 }
 
-const NoteDetail = ({ id }: Props) => {
+const NoteDetailPage = ({ id }: Props) => {
   const { handleGetNote, handleUpdateNote } = useNote()
   const note = handleGetNote(id)
 
@@ -58,4 +58,4 @@ const NoteDetail = ({ id }: Props) => {
   )
 }
 
-export default NoteDetail
+export default NoteDetailPage

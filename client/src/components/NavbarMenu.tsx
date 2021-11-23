@@ -32,7 +32,7 @@ const links = [
 ]
 
 const NavbarMenu = () => {
-  const { isUserLoggedIn, handleLogout } = useUser()
+  const { isUserLoggedIn, handleLogoutUser } = useUser()
   const { isMenuOpenned, handleToggleMenu } = useMenu()
 
   const menuRef = useRef<HTMLDivElement>(null)
@@ -50,7 +50,7 @@ const NavbarMenu = () => {
       </Button>
 
       {isUserLoggedIn ? (
-        <Button variant='danger' onClick={handleLogout}>
+        <Button variant='danger' onClick={handleLogoutUser}>
           Log out
         </Button>
       ) : (

@@ -1,5 +1,6 @@
+import { User } from 'notes-types'
 import { toggleMenu } from 'slices/appSlice'
-import { logoutUser } from 'slices/userSlice'
+import { loginUser, logoutUser } from 'slices/userSlice'
 import { useAppDispatch, useAppSelector } from 'store'
 
 function useUser() {
@@ -8,12 +9,21 @@ function useUser() {
 
   const isUserLoggedIn = user.username !== ''
 
-  const handleLogout = () => {
+  const handleLoginUser = (user: User) => {
+    dispatch(loginUser(user))
+  }
+
+  const handleSignupUser = (user: User) => {
+    console.log(user)
+    // dispatch(signupUser(user))
+  }
+
+  const handleLogoutUser = () => {
     dispatch(toggleMenu())
     dispatch(logoutUser())
   }
 
-  return { user, isUserLoggedIn, handleLogout }
+  return { user, isUserLoggedIn, handleLoginUser, handleLogoutUser, handleSignupUser }
 }
 
 export default useUser

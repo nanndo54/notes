@@ -2,23 +2,23 @@ import Button from 'components/Button'
 import useUser from 'hooks/useUser'
 import { User } from 'notes-types'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import styles from 'styles/LoginPage.module.css'
+import styles from 'styles/SignupPage.module.css'
 
 interface Form extends User {
   password: string
 }
 
-const LoginPage = () => {
+const SignupPage = () => {
   const {
     handleSubmit,
     formState: { errors },
     register
   } = useForm<Form>()
 
-  const { handleLoginUser } = useUser()
+  const { handleSignupUser } = useUser()
 
   const handleSubmitForm: SubmitHandler<Form> = (user) => {
-    handleLoginUser(user)
+    handleSignupUser(user)
   }
 
   return (
@@ -53,4 +53,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default SignupPage
