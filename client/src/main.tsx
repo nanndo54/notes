@@ -1,4 +1,5 @@
 import './styles/index.css'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 import App from 'components/App'
 import { StrictMode } from 'react'

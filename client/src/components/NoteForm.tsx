@@ -34,7 +34,7 @@ const NoteForm = () => {
             {...register('title', { required: true })}
           />
           {errors.title?.type === 'required' && (
-            <div className='error-msg'>Title is required</div>
+            <div className='error'>Title is required</div>
           )}
         </div>
         <div>

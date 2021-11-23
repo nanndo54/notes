@@ -9,11 +9,7 @@ function useApp() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (isUserLoggedIn) {
-      dispatch(getNotes())
-    } else {
-      dispatch(clearNotes())
-    }
+    dispatch(isUserLoggedIn ? getNotes() : clearNotes())
   }, [isUserLoggedIn])
 }
 

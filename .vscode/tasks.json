@@ -52,7 +52,7 @@
     },
     {
       "type": "npm",
-      "script": "build-watch client",
+      "script": "build-watch:client",
       "group": "build",
       "problemMatcher": [],
       "label": "npm: build-watch client"
