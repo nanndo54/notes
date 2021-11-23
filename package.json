@@ -40,9 +40,5 @@
     "node": "16.x",
     "npm": "7.x"
   },
-  "pre-commit": "lint",
-  "dependencies": {
-    "mongoose": "^6.0.13",
-    "server": "^1.0.36"
-  }
+  "pre-commit": "lint"
 }

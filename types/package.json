@@ -6,11 +6,5 @@
   "repository": "git@github.com:pabloc54/notes.git",
   "license": "MIT",
   "type": "module",
-  "scripts": {
-    "build": "tsc"
-  },
-  "devDependencies": {
-    "typescript": "4.3.5"
-  },
   "pre-commit": "lint"
 }
