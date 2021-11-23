@@ -24,7 +24,7 @@ const SignupPage = () => {
   return (
     <div className={styles.base}>
       <form onSubmit={handleSubmit(handleSubmitForm)} autoComplete='off'>
-        <h2>Login</h2>
+        <h2>Sign up</h2>
         <div>
           <label htmlFor='username'>Username</label>
           <input
@@ -47,7 +47,7 @@ const SignupPage = () => {
             <div className='error'>Password is required</div>
           )}
         </div>
-        <Button variant='primary'>Log in</Button>
+        <Button variant='primary'>Sign up</Button>
       </form>
     </div>
   )

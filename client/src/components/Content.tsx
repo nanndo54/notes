@@ -5,6 +5,7 @@ import LoginPage from 'pages/LoginPage'
 import NoteDetailPage from 'pages/NoteDetailPage'
 import NotesPage from 'pages/NotesPage'
 import NotFoundPage from 'pages/NotFoundPage'
+import SignupPage from 'pages/SignupPage'
 import styles from 'styles/Content.module.css'
 import { Redirect, Route, Switch } from 'wouter'
 
@@ -19,12 +20,6 @@ const Routes = () => {
       alternativeComponent: <LandingPage />
     },
     {
-      path: '/notes',
-      component: <NotesPage />,
-      condition: isUserLoggedIn,
-      alternativeComponent: <Redirect to='/login' />
-    },
-    {
       path: '/login',
       component: <LoginPage />,
       condition: !isUserLoggedIn,
@@ -32,9 +27,15 @@ const Routes = () => {
     },
     {
       path: '/signup',
-      component: <LoginPage />,
+      component: <SignupPage />,
       condition: !isUserLoggedIn,
       alternativeComponent: <Redirect to='/' />
+    },
+    {
+      path: '/notes',
+      component: <NotesPage />,
+      condition: isUserLoggedIn,
+      alternativeComponent: <Redirect to='/login' />
     },
     {
       path: '/notes/:id',

@@ -1,35 +1,13 @@
 import Button from 'components/Button'
 import Icon from 'components/Icon'
 import ICONS from 'constants/icons'
+import { links, loggedInLinks } from 'constants/links'
 import useMenu from 'hooks/useMenu'
 import useOutsideAlerter from 'hooks/useOutsideAleter'
 import useUser from 'hooks/useUser'
 import { useRef } from 'react'
 import styles from 'styles/NavbarMenu.module.css'
 import { Link } from 'wouter'
-
-const links = [
-  {
-    icon: ICONS.BIN,
-    label: 'Home',
-    to: '/'
-  },
-  {
-    icon: ICONS.BIN,
-    label: 'Profile',
-    to: '/profile'
-  },
-  {
-    icon: ICONS.BIN,
-    label: 'About',
-    to: '/about'
-  },
-  {
-    icon: ICONS.BIN,
-    label: 'Contact',
-    to: '/contact'
-  }
-]
 
 const NavbarMenu = () => {
   const { isUserLoggedIn, handleLogoutUser } = useUser()
@@ -50,21 +28,25 @@ const NavbarMenu = () => {
       </Button>
 
       {isUserLoggedIn ? (
-        <Button variant='danger' onClick={handleLogoutUser}>
-          Log out
-        </Button>
+        <>
+          <Button variant='danger' onClick={handleLogoutUser}>
+            Log out
+          </Button>
+          {loggedInLinks.map((link) => (
+            <Link key={link.label} to={link.to} onClick={handleToggleMenu}>
+              {<Icon name={link.icon} />}
+              {link.label}
+            </Link>
+          ))}
+        </>
       ) : (
-        <Link to='/login' onClick={handleToggleMenu}>
-          {<Icon name={ICONS.BUBBLE} />}
-          Log in
-        </Link>
+        links.map((link) => (
+          <Link key={link.label} to={link.to} onClick={handleToggleMenu}>
+            {<Icon name={link.icon} />}
+            {link.label}
+          </Link>
+        ))
       )}
-      {links.map((link) => (
-        <Link key={link.label} to={link.to} onClick={handleToggleMenu}>
-          {<Icon name={link.icon} />}
-          {link.label}
-        </Link>
-      ))}
     </div>
   )
 }

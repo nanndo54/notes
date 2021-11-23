@@ -2,5 +2,11 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
-  gap: 40px 25px;
+  gap: 30px 25px;
+}
+
+@media (max-width: 600px) {
+  .base {
+    gap: 20px 15px;
+  }
 }
