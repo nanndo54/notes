@@ -4,6 +4,7 @@ import LandingPage from 'pages/LandingPage'
 import LoginPage from 'pages/LoginPage'
 import NoteDetailPage from 'pages/NoteDetailPage'
 import NotesPage from 'pages/NotesPage'
+import NotFoundPage from 'pages/NotFoundPage'
 import styles from 'styles/Content.module.css'
 import { Redirect, Route, Switch } from 'wouter'
 
@@ -43,11 +44,7 @@ const Routes = () => {
     },
     {
       path: '/:page',
-      component: ({ page }: { page: string }) =>
-        `404, Sorry the page ${page} does not exist!`,
-      condition: isUserLoggedIn,
-      alternativeComponent: ({ page }: { page: string }) =>
-        `404, Sorry the page ${page} does not exist! login first`
+      component: ({ page }: { page: string }) => <NotFoundPage page={page} />
     }
   ]
 
@@ -55,7 +52,9 @@ const Routes = () => {
     <div className={styles.base}>
       <Switch>
         {
-          routes.map(({ path, component, condition, alternativeComponent }) => (
+          routes.map(({ path, component, condition = true, alternativeComponent = <>
+
+              </> }) => (
             <Route key={path} path={path}>
               {condition ? component : alternativeComponent}
             </Route>

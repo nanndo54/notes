@@ -1,7 +1,7 @@
 import Button from 'components/Button'
 import useNote from 'hooks/useNote'
+import useNoteDetails from 'hooks/useNoteDetails'
 import { Note } from 'notes-types'
-import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import styles from 'styles/NoteDetailPage.module.css'
 
@@ -10,28 +10,22 @@ interface Props {
 }
 
 const NoteDetailPage = ({ id }: Props) => {
-  const { handleGetNote, handleUpdateNote } = useNote()
-  const note = handleGetNote(id)
+  const { handleUpdateNote } = useNote()
 
   const {
     handleSubmit,
     formState: { errors },
     register,
     setValue
-  } = useForm<Note>({
-    defaultValues: note
-  })
+  } = useForm<Note>()
+
+  const note = useNoteDetails(id, setValue)
 
   const handleSubmitForm: SubmitHandler<Note> = (newNote) => {
     newNote.date = new Date()
     newNote.id = id
     handleUpdateNote(newNote)
   }
-
-  useEffect(() => {
-    setValue('title', note?.title || '')
-    setValue('content', note?.content)
-  }, [note])
 
   return (
     <div className={styles.base}>

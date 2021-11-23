@@ -3,7 +3,7 @@ import { createNote, deleteNote, updateNote } from 'services/notesServices'
 import { useAppDispatch, useAppSelector } from 'store'
 
 function useNote() {
-  const notes = useAppSelector((state) => state.notes)
+  const { notes, loading } = useAppSelector((state) => state.notes)
   const dispatch = useAppDispatch()
 
   const handleGetNote = (id: string) => {
@@ -23,7 +23,7 @@ function useNote() {
     dispatch(deleteNote(note))
   }
 
-  return { handleGetNote, handleCreateNote, handleUpdateNote, handleDeleteNote }
+  return { handleGetNote, handleCreateNote, handleUpdateNote, handleDeleteNote, loading }
 }
 
 export default useNote
