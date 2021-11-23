@@ -1,9 +1,10 @@
 import useUser from 'hooks/useUser'
+import HomePage from 'pages/HomePage'
 import LandingPage from 'pages/LandingPage'
 import LoginPage from 'pages/LoginPage'
 import NoteDetailPage from 'pages/NoteDetailPage'
 import NotesPage from 'pages/NotesPage'
-import styles from 'styles/Routes.module.css'
+import styles from 'styles/Content.module.css'
 import { Redirect, Route, Switch } from 'wouter'
 
 const Routes = () => {
@@ -12,7 +13,7 @@ const Routes = () => {
   const routes = [
     {
       path: '/',
-      component: <LandingPage />,
+      component: <HomePage />,
       condition: isUserLoggedIn,
       alternativeComponent: <LandingPage />
     },

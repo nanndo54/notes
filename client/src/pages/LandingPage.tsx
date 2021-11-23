@@ -1,7 +1,7 @@
 import styles from 'styles/LandingPage.module.css'
 import { Link } from 'wouter'
 
-const Main = () => (
+const LandingPage = () => (
   <div className={styles.base}>
     <p>Notes is the best app ever.</p>
     <Link to='/about'>About notes</Link>
@@ -10,4 +10,4 @@ const Main = () => (
   </div>
 )
 
-export default Main
+export default LandingPage
