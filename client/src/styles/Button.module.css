@@ -1,6 +1,6 @@
 .base {
   padding: 10px 20px;
-  height: 100%;
+  height: fit-content;
   border: 2px solid #bbb;
   background-color: #ddd;
   border-radius: 25px;

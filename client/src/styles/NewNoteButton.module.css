@@ -1,0 +1,33 @@
+.base {
+  z-index: 3;
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+
+  /* border: none; */
+  box-shadow: none;
+  border-radius: 50%;
+
+  padding: 12px;
+
+  transform: translateY(100px);
+  animation: appear 0.3s ease forwards;
+}
+
+.base svg {
+  fill: url(#new-button-gradient) black;
+  max-width: initial;
+  width: 35px;
+}
+
+.base {
+  --color-start: rgb(61, 61, 173);
+  --color-middle: rgb(118, 48, 184);
+  --color-stop: rgb(214, 70, 137);
+}
+
+@keyframes appear {
+  to {
+    transform: translateY(0);
+  }
+}
