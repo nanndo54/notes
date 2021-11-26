@@ -17,11 +17,14 @@ const deleteNote = createAsyncThunk('notes/deleteNote', async (note: Note) => {
   return response.data
 })
 
-const getNotes = createAsyncThunk('notes/getNotes', async () => {
-  const response = await axios.get(NOTES_API_URL)
-  if (response.status !== 200) throw new Error('Error getting notes')
-  return response.data
-})
+const getNotes = createAsyncThunk(
+  'notes/getNotes',
+  async ({ sortby, direction }: { sortby: string; direction: number }) => {
+    const response = await axios.get(`${NOTES_API_URL}/${sortby}&${direction}`)
+    if (response.status !== 200) throw new Error('Error getting notes')
+    return response.data
+  }
+)
 
 const getNote = createAsyncThunk('notes/getNote', async (id: number) => {
   const response = await axios.get(`${NOTES_API_URL}/${id}`)

@@ -4,11 +4,15 @@ import { createNote, deleteNote, getNotes, updateNote } from 'services/noteServi
 
 interface State {
   notes: Note[]
+  sortby: string
+  direction: number
   loading: boolean
 }
 
 const initialState: State = {
   notes: [],
+  sortby: 'date',
+  direction: -1,
   loading: true
 }
 
@@ -16,6 +20,12 @@ const notesSlice = createSlice({
   name: 'notes',
   initialState,
   reducers: {
+    changeSortBy: (state, action: PayloadAction<string>) => {
+      state.sortby = action.payload
+    },
+    triggerDirection: (state) => {
+      state.direction *= -1
+    },
     clearNotes: (state) => {
       state.notes = []
     }
@@ -43,6 +53,6 @@ const notesSlice = createSlice({
   }
 })
 
-export const { clearNotes } = notesSlice.actions
+export const { changeSortBy, triggerDirection, clearNotes } = notesSlice.actions
 
 export default notesSlice.reducer
