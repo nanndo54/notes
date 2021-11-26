@@ -4,9 +4,12 @@ import { Note } from 'notes-types'
 import NoteModel from '../models/NoteModel.js'
 
 const notesRouter = (app: Application) => {
-  app.get('/api/notes', (req, res) => {
+  app.get('/api/notes/(:sortby([a-z]+))?&?(:dir(-?1))?', (req, res) => {
+    const sortby = req.params.sortby || 'date'
+    const dir = Number(req.params.dir) || -1
+
     NoteModel.find({})
-      .sort({ date: -1 })
+      .sort({ [sortby]: dir })
       .then((notes) => res.send(notes))
       .catch((err) => res.status(400).send(err))
   })
