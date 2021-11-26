@@ -26,7 +26,7 @@ const getNotes = createAsyncThunk(
   }
 )
 
-const getNote = createAsyncThunk('notes/getNote', async (id: number) => {
+const getNote = createAsyncThunk('notes/getNote', async (id: string) => {
   const response = await axios.get(`${NOTES_API_URL}/${id}`)
   if (response.status !== 200) throw new Error('Error getting note')
   return response.data

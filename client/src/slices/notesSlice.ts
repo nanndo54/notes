@@ -6,6 +6,7 @@ interface State {
   notes: Note[]
   sortby: string
   direction: number
+  needed: boolean
   loading: boolean
 }
 
@@ -13,7 +14,8 @@ const initialState: State = {
   notes: [],
   sortby: 'date',
   direction: -1,
-  loading: true
+  needed: false,
+  loading: false
 }
 
 const notesSlice = createSlice({
@@ -25,6 +27,9 @@ const notesSlice = createSlice({
     },
     triggerDirection: (state) => {
       state.direction *= -1
+    },
+    setNeededNotes: (state) => {
+      state.needed = true
     },
     clearNotes: (state) => {
       state.notes = []
@@ -53,6 +58,7 @@ const notesSlice = createSlice({
   }
 })
 
-export const { changeSortBy, triggerDirection, clearNotes } = notesSlice.actions
+export const { changeSortBy, triggerDirection, setNeededNotes, clearNotes } =
+  notesSlice.actions
 
 export default notesSlice.reducer

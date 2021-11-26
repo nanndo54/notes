@@ -29,9 +29,7 @@ const NoteDetailPage = ({ id }: Props) => {
     const note = getValues()
     note.id = id
 
-    handleUpdateNote(note)
-      .unwrap()
-      .then(() => toast.success('Note updated'))
+    handleUpdateNote(note).then(() => toast.success('Note updated'))
   }, 1000)
 
   return (

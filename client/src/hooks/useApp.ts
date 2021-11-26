@@ -6,12 +6,12 @@ import { useAppDispatch, useAppSelector } from 'store'
 
 function useApp() {
   const { isUserLoggedIn } = useUser()
-  const { sortby, direction } = useAppSelector((state) => state.notes)
+  const { sortby, direction, needed } = useAppSelector((state) => state.notes)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(isUserLoggedIn ? getNotes({ sortby, direction }) : clearNotes())
-  }, [isUserLoggedIn, sortby, direction])
+    dispatch(needed && isUserLoggedIn ? getNotes({ sortby, direction }) : clearNotes())
+  }, [isUserLoggedIn, sortby, direction, needed])
 }
 
 export default useApp

@@ -4,7 +4,7 @@ import { Note } from 'notes-types'
 import NoteModel from '../models/NoteModel.js'
 
 const notesRouter = (app: Application) => {
-  app.get('/api/notes/(:sortby([a-z]+))?&?(:dir(-?1))?', (req, res) => {
+  app.get('/api/notes/(:sortby([a-z]+))&(:dir(-?1))', (req, res) => {
     const sortby = req.params.sortby || 'date'
     const dir = Number(req.params.dir) || -1
 
@@ -16,6 +16,10 @@ const notesRouter = (app: Application) => {
 
   app.get('/api/notes/:id([a-z\\d]+)', (req, res) => {
     const id = req.params.id
+
+    if (!id.match(/^[0-9a-fA-F]{24}$/))
+      return res.status(400).send({ error: 'Invalid id' })
+
     NoteModel.findById(id)
       .then((note) => {
         if (!note) return res.status(404).send()
@@ -34,6 +38,10 @@ const notesRouter = (app: Application) => {
 
   app.delete('/api/notes/:id([a-z\\d]+)', (req, res) => {
     const id = req.params.id
+
+    if (!id.match(/^[0-9a-fA-F]{24}$/))
+      return res.status(400).send({ error: 'Invalid id' })
+
     NoteModel.findByIdAndRemove(id)
       .then((note) => {
         if (!note) return res.status(404).send()
@@ -44,6 +52,10 @@ const notesRouter = (app: Application) => {
 
   app.put('/api/notes/:id([a-z\\d]+)', (req, res) => {
     const id = req.params.id
+
+    if (!id.match(/^[0-9a-fA-F]{24}$/))
+      return res.status(400).send({ error: 'Invalid id' })
+
     const note: Note = req.body
     note.date = new Date()
 

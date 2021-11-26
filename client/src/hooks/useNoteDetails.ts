@@ -11,14 +11,14 @@ function useNoteDetails(id: string, callback: (note: Note) => void) {
   useEffect(() => {
     if (loading) return
 
-    const note = handleGetNote(id)
-    if (note) return callback(note)
+    if (id === 'new') {
+      handleCreateNote().then((note) => setLocation(`/notes/${note.id}`))
+      return
+    }
 
-    if (id !== 'new') return setLocation('/notes')
-
-    handleCreateNote()
-      .unwrap()
-      .then((note) => setLocation(`/notes/${note.id}`))
+    handleGetNote(id)
+      .then((note) => callback(note))
+      .catch(() => setLocation('/notes'))
   }, [loading])
 }
 
