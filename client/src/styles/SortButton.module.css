@@ -1,0 +1,11 @@
+.base {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.base :first-child {
+  border-right: 1px solid black;
+}

@@ -42,7 +42,7 @@ const notesRouter = (app: Application) => {
   app.put('/api/notes/:id([a-z\\d]+)', (req, res) => {
     const id = req.params.id
     const note: Note = req.body
-    console.log(req.body)
+    note.date = new Date()
 
     NoteModel.findByIdAndUpdate(id, note, { new: true })
       .then((note) => {

@@ -1,6 +1,6 @@
 import useUser from 'hooks/useUser'
 import { useEffect } from 'react'
-import { getNotes } from 'services/notesServices'
+import { getNotes } from 'services/noteServices'
 import { clearNotes } from 'slices/notesSlice'
 import { useAppDispatch } from 'store'
 

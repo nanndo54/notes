@@ -1,28 +1,25 @@
 import useNote from 'hooks/useNote'
 import { Note } from 'notes-types'
-import { useEffect, useState } from 'react'
-import { UseFormSetValue } from 'react-hook-form'
+import { useEffect } from 'react'
 import { useLocation } from 'wouter'
 
-function useNoteDetails(id: string, setValue: UseFormSetValue<Note>) {
-  const [note, setNote] = useState<Note>()
+// eslint-disable-next-line no-unused-vars
+function useNoteDetails(id: string, callback: (note: Note) => void) {
   const [, setLocation] = useLocation()
-
-  const { loading, handleGetNote } = useNote()
+  const { loading, handleGetNote, handleCreateNote } = useNote()
 
   useEffect(() => {
     if (loading) return
 
     const note = handleGetNote(id)
-    setNote(note)
+    if (note) return callback(note)
 
-    if (!note) setLocation('/notes')
+    if (id !== 'new') return setLocation('/notes')
 
-    setValue('title', note?.title || '')
-    setValue('content', note?.content || '')
+    handleCreateNote()
+      .unwrap()
+      .then((note) => setLocation(`/notes/${note.id}`))
   }, [loading])
-
-  return note
 }
 
 export default useNoteDetails

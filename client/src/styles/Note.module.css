@@ -10,8 +10,7 @@
   text-decoration: none;
 }
 
-.title {
-  font-size: 1.4rem;
+.base h3 {
   color: rgb(247, 187, 187);
 
   margin-bottom: 1rem;
@@ -22,7 +21,7 @@
   -webkit-box-orient: vertical;
 }
 
-.content {
+.base p {
   width: 100%;
   color: #ccc;
   font-size: 0.9rem;

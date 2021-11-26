@@ -13,13 +13,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "0.24.0",
     "@reduxjs/toolkit": "1.6.0",
+    "axios": "0.24.0",
     "notes-types": "1.0.0",
     "react": "17.0.0",
     "react-dom": "17.0.0",
     "react-hook-form": "7.9.0",
     "react-redux": "7.2.4",
+    "react-textarea-autosize": "^8.3.3",
     "react-toastify": "8.1.0",
     "redux": "4.1.2",
     "wouter": "2.7.4"
@@ -30,7 +31,7 @@
     "@types/react-redux": "^7.1.16",
     "@types/redux-form": "^8.3.1",
     "@vitejs/plugin-react": "^1.0.9",
-    "vite-tsconfig-paths": "^3.3.17",
-    "vite": "^2.3.8"
+    "vite": "^2.3.8",
+    "vite-tsconfig-paths": "^3.3.17"
   }
 }

@@ -1,8 +1,12 @@
-import Button from 'components/Button'
+import { getPlaceholder } from 'constants/placeholders'
+import useDebounce from 'hooks/useDebounce'
 import useNote from 'hooks/useNote'
 import useNoteDetails from 'hooks/useNoteDetails'
 import { Note } from 'notes-types'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useMemo } from 'react'
+import { useForm } from 'react-hook-form'
+import TextareaAutosize from 'react-textarea-autosize'
+import { toast } from 'react-toastify'
 import styles from 'styles/NoteDetailPage.module.css'
 
 interface Props {
@@ -10,45 +14,42 @@ interface Props {
 }
 
 const NoteDetailPage = ({ id }: Props) => {
+  const placeholder = useMemo(getPlaceholder, [])
+
+  const { register, getValues, setValue } = useForm<Note>()
+
+  useNoteDetails(id, (note) => {
+    setValue('title', note.title)
+    setValue('content', note.content)
+  })
+
   const { handleUpdateNote } = useNote()
 
-  const {
-    handleSubmit,
-    formState: { errors },
-    register,
-    setValue
-  } = useForm<Note>()
+  const handleChangeForm = useDebounce(() => {
+    const note = getValues()
+    note.id = id
 
-  const note = useNoteDetails(id, setValue)
-
-  const handleSubmitForm: SubmitHandler<Note> = (newNote) => {
-    newNote.date = new Date()
-    newNote.id = id
-    handleUpdateNote(newNote)
-  }
+    handleUpdateNote(note)
+      .unwrap()
+      .then(() => toast.success('Note updated'))
+  }, 1000)
 
   return (
-    <div className={styles.base}>
-      <form onSubmit={handleSubmit(handleSubmitForm)} autoComplete='off'>
-        <div className='control'>
-          <label htmlFor='title'>Title</label>
-          <input
-            id='title'
-            placeholder={note?.title}
-            className={errors.title?.type === 'required' ? 'error-input' : ''}
-            {...register('title', { required: true })}
-          />
-          {errors.title?.type === 'required' && (
-            <div className='error-msg'>Title is required</div>
-          )}
-        </div>
-        <div className='control'>
-          <label htmlFor='content'>Content</label>
-          <input id='content' {...register('content')} />
-        </div>
-        <Button variant='primary'>Update note</Button>
-      </form>
-    </div>
+    <form onChange={handleChangeForm} autoComplete='off'>
+      <div className={styles.base}>
+        <TextareaAutosize
+          className={styles.title}
+          placeholder={placeholder}
+          maxRows={3}
+          {...register('title')}
+        />
+        <textarea
+          className={styles.content}
+          placeholder='content'
+          {...register('content')}
+        />
+      </div>
+    </form>
   )
 }
 

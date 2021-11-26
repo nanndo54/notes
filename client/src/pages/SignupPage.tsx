@@ -23,7 +23,11 @@ const SignupPage = () => {
 
   return (
     <div className={styles.base}>
-      <form onSubmit={handleSubmit(handleSubmitForm)} autoComplete='off'>
+      <form
+        autoComplete='off'
+        className='regular'
+        onSubmit={handleSubmit(handleSubmitForm)}
+      >
         <h2>Sign up</h2>
         <div>
           <label htmlFor='username'>Username</label>

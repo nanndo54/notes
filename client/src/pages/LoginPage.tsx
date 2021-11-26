@@ -23,7 +23,7 @@ const LoginPage = () => {
 
   return (
     <div className={styles.base}>
-      <form onSubmit={handleSubmit(handleSubmitForm)} autoComplete='off'>
+      <form className='regular' onSubmit={handleSubmit(handleSubmitForm)}>
         <h2>Sign in</h2>
         <div>
           <label htmlFor='username'>Username</label>

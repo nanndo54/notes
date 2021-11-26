@@ -8,7 +8,7 @@ const NoteGrid = () => {
   return (
     <div className={styles.base}>
       {notes.length ? (
-        notes.map((note) => <Note key={note.id} note={note} />)
+        notes.map((note) => <Note key={note.id} {...note} />)
       ) : (
         <div className={styles.message}>Add your first note!</div>
       )}

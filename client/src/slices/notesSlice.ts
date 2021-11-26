@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Note } from 'notes-types'
-import { createNote, deleteNote, getNotes, updateNote } from 'services/notesServices'
+import { createNote, deleteNote, getNotes, updateNote } from 'services/noteServices'
 
 interface State {
   notes: Note[]
@@ -18,12 +18,14 @@ const notesSlice = createSlice({
   reducers: {
     clearNotes: (state) => {
       state.notes = []
-      state.loading = true
     }
   },
   extraReducers: {
     [createNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
       state.notes.unshift(payload)
+    },
+    [getNotes.pending.toString()]: (state) => {
+      state.loading = true
     },
     [getNotes.fulfilled.toString()]: (state, { payload }: PayloadAction<Note[]>) => {
       state.notes = payload
@@ -35,7 +37,8 @@ const notesSlice = createSlice({
     },
     [updateNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
       const index = state.notes.findIndex((note) => note.id === payload.id)
-      state.notes[index] = payload
+      state.notes.splice(index, 1)
+      state.notes.unshift(payload)
     }
   }
 })

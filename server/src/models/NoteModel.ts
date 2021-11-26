@@ -4,9 +4,9 @@ import { Note } from 'notes-types'
 const { model, Schema } = moongose
 
 const schema = new Schema<Note>({
-  title: { type: String, required: true },
+  title: { type: String },
   content: { type: String },
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: () => new Date() }
 })
 
 schema.set('toJSON', {

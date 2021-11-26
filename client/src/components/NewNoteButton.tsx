@@ -1,12 +1,13 @@
-import Button from 'components/Button'
 import Icon from 'components/Icon'
 import ICONS from 'constants/icons'
 import styles from 'styles/NewNoteButton.module.css'
+import { Link } from 'wouter'
 
 const NewNoteButton = () => (
-  <Button className={styles.base}>
+  <Link to='/notes/new' className={styles.base}>
+    <div />
     <Icon name={ICONS.PLUS} id='new-button-gradient' />
-  </Button>
+  </Link>
 )
 
 export default NewNoteButton
