@@ -8,7 +8,7 @@ import morgan from 'morgan'
 import { AddressInfo } from 'net'
 import path from 'path'
 
-import appRouter from './routes/index.js'
+import appRouter from './router/appRouter.js'
 
 const app: Application = express()
 app.set('port', process.env.PORT || 3000)

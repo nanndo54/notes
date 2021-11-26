@@ -1,9 +1,11 @@
 import { Application } from 'express'
 
-import notesRouter from './notes.js'
+import notesRouter from './notesRouter.js'
+import userRouter from './userRouter.js'
 
 const appRouter = (app: Application) => {
   notesRouter(app)
+  userRouter(app)
 }
 
 export default appRouter
