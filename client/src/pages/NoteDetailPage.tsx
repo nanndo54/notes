@@ -13,12 +13,12 @@ interface Props {
   id: string
 }
 
-const NoteDetailPage = ({ id }: Props) => {
+const NoteDetailPage = ({ id: initialId }: Props) => {
   const placeholder = useMemo(getPlaceholder, [])
 
   const { register, getValues, setValue } = useForm<Note>()
 
-  useNoteDetails(id, (note) => {
+  const id = useNoteDetails(initialId, (note) => {
     setValue('title', note.title)
     setValue('content', note.content)
   })
