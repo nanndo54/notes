@@ -1,16 +1,15 @@
 .base {
   z-index: 3;
   position: fixed;
-  bottom: 40px;
-  right: 30px;
+  bottom: 50px;
+  right: 10%;
 
-  /* border: none; */
-  box-shadow: none;
+  background-color: #bbb;
   border-radius: 50%;
 
   padding: 12px;
 
-  transform: translateY(100px);
+  transform: translateY(150px);
   animation: appear 0.3s ease forwards;
 }
 
@@ -22,8 +21,14 @@
 
 .base {
   --color-start: rgb(61, 61, 173);
-  --color-middle: rgb(118, 48, 184);
-  --color-stop: rgb(214, 70, 137);
+  --color-middle: rgb(48, 184, 150);
+  --color-stop: rgb(188, 214, 70);
+}
+
+@media (max-width: 600px) {
+  .base {
+    right: 5%;
+  }
 }
 
 @keyframes appear {

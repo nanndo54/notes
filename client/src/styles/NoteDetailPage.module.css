@@ -1,7 +1,12 @@
 .base {
-  width: 100%;
+  gap: 30px;
+}
+
+.note {
+  width: 90%;
   height: 500px;
   padding: 30px;
+  margin: 0 auto;
 
   background: #449;
 
@@ -13,12 +18,12 @@
   gap: 25px;
 }
 
-.base > * {
+.note > * {
   resize: none;
   width: 100%;
 }
 
-.base .title {
+.note .title {
   flex-shrink: 0;
   line-height: 30px;
   font-size: 1.4rem;
@@ -28,7 +33,7 @@
   border-bottom: 2px solid #333;
 }
 
-.base .content {
+.note .content {
   height: 100%;
   font-size: 0.9rem;
   color: #ccc;
@@ -36,12 +41,12 @@
   overflow: auto;
 }
 
-.base::-webkit-scrollbar {
+.note::-webkit-scrollbar {
   width: 0;
 }
 
 @media (max-width: 600px) {
-  .base {
+  .note {
     height: 400px;
   }
 }

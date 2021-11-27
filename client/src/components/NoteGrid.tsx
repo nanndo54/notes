@@ -1,4 +1,4 @@
-import Note from 'components/Note'
+import NoteItem from 'components/NoteItem'
 import { useAppSelector } from 'store'
 import styles from 'styles/NoteGrid.module.css'
 
@@ -8,7 +8,7 @@ const NoteGrid = () => {
   return (
     <div className={styles.base}>
       {notes.length ? (
-        notes.map((note) => <Note key={note.id} {...note} />)
+        notes.map((note) => <NoteItem key={note.id} {...note} />)
       ) : (
         <div className={styles.message}>Add your first note!</div>
       )}

@@ -1,9 +1,8 @@
 import { toggleMenu } from 'slices/appSlice'
 import { useAppDispatch, useAppSelector } from 'store'
 
-function useMenu() {
+function useNavbarMenu() {
   const { isMenuOpenned } = useAppSelector((state) => state.app)
-
   const dispatch = useAppDispatch()
 
   const handleToggleMenu = () => {
@@ -13,4 +12,4 @@ function useMenu() {
   return { isMenuOpenned, handleToggleMenu }
 }
 
-export default useMenu
+export default useNavbarMenu

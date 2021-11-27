@@ -1,3 +1,4 @@
+import BackButton from 'components/BackButton'
 import { getPlaceholder } from 'constants/placeholders'
 import useDebounce from 'hooks/useDebounce'
 import useNote from 'hooks/useNote'
@@ -33,21 +34,24 @@ const NoteDetailPage = ({ id: initialId }: Props) => {
   }, 1000)
 
   return (
-    <form onChange={handleChangeForm} autoComplete='off'>
-      <div className={styles.base}>
-        <TextareaAutosize
-          className={styles.title}
-          placeholder={placeholder}
-          maxRows={3}
-          {...register('title')}
-        />
-        <textarea
-          className={styles.content}
-          placeholder='content'
-          {...register('content')}
-        />
-      </div>
-    </form>
+    <div className={styles.base}>
+      <BackButton />
+      <form onChange={handleChangeForm} autoComplete='off'>
+        <div className={styles.note}>
+          <TextareaAutosize
+            className={styles.title}
+            placeholder={placeholder}
+            maxRows={3}
+            {...register('title')}
+          />
+          <textarea
+            className={styles.content}
+            placeholder='content'
+            {...register('content')}
+          />
+        </div>
+      </form>
+    </div>
   )
 }
 

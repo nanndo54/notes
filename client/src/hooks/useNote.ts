@@ -3,7 +3,7 @@ import { createNote, deleteNote, getNote, updateNote } from 'services/noteServic
 import { useAppDispatch, useAppSelector } from 'store'
 
 function useNote() {
-  const { notes, loading } = useAppSelector((state) => state.notes)
+  const { notes, selected, loading } = useAppSelector((state) => state.notes)
   const dispatch = useAppDispatch()
 
   const handleGetNote = (id: string) => {
@@ -17,7 +17,14 @@ function useNote() {
 
   const handleDeleteNote = (note: Note) => dispatch(deleteNote(note)).unwrap()
 
-  return { handleGetNote, handleCreateNote, handleUpdateNote, handleDeleteNote, loading }
+  return {
+    handleGetNote,
+    handleCreateNote,
+    handleUpdateNote,
+    handleDeleteNote,
+    selected,
+    loading
+  }
 }
 
 export default useNote

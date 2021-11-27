@@ -2,14 +2,14 @@ import Button from 'components/Button'
 import Icon from 'components/Icon'
 import NavbarMenu from 'components/NavbarMenu'
 import ICONS from 'constants/icons'
-import useMenu from 'hooks/useMenu'
+import useNavbarMenu from 'hooks/useNavbarMenu'
 import useUser from 'hooks/useUser'
 import styles from 'styles/Navbar.module.css'
 import { Link } from 'wouter'
 
 const Navbar = () => {
   const { isUserLoggedIn } = useUser()
-  const { handleToggleMenu } = useMenu()
+  const { handleToggleMenu } = useNavbarMenu()
 
   return (
     <nav className={`${styles.base} ${isUserLoggedIn ? styles.loggedIn : ''}`}>

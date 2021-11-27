@@ -3,7 +3,7 @@ import { RefObject, useEffect } from 'react'
 function useOutsideAlerter(
   ref: RefObject<any>,
   callback: () => void,
-  condition: boolean
+  condition: boolean = true
 ) {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {

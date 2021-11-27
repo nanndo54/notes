@@ -2,7 +2,7 @@ import Button from 'components/Button'
 import Icon from 'components/Icon'
 import ICONS from 'constants/icons'
 import { links, loggedInLinks } from 'constants/links'
-import useMenu from 'hooks/useMenu'
+import useNavbarMenu from 'hooks/useNavbarMenu'
 import useOutsideAlerter from 'hooks/useOutsideAleter'
 import useUser from 'hooks/useUser'
 import { useRef } from 'react'
@@ -11,7 +11,7 @@ import { Link } from 'wouter'
 
 const NavbarMenu = () => {
   const { isUserLoggedIn, handleLogoutUser } = useUser()
-  const { isMenuOpenned, handleToggleMenu } = useMenu()
+  const { isMenuOpenned, handleToggleMenu } = useNavbarMenu()
 
   const menuRef = useRef<HTMLDivElement>(null)
 

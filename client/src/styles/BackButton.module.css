@@ -1,0 +1,10 @@
+.base {
+  padding: 12px;
+  align-self: flex-start;
+}
+
+@media (max-width: 600px) {
+  .base {
+    right: 5%;
+  }
+}

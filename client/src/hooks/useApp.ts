@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from 'store'
 
 function useApp() {
   const { isUserLoggedIn } = useUser()
-  const { sortby, direction, needed } = useAppSelector((state) => state.notes)
+  const { sortBy: sortby, direction, needed } = useAppSelector((state) => state.notes)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
