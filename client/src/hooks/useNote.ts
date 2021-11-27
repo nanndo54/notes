@@ -1,5 +1,11 @@
 import { Note } from 'notes-types'
-import { createNote, deleteNote, getNote, updateNote } from 'services/noteServices'
+import {
+  createNote,
+  deleteNote,
+  duplicateNote,
+  getNote,
+  updateNote
+} from 'services/noteServices'
 import { useAppDispatch, useAppSelector } from 'store'
 
 function useNote() {
@@ -13,6 +19,8 @@ function useNote() {
 
   const handleCreateNote = (note: Note = {}) => dispatch(createNote(note)).unwrap()
 
+  const handleDuplicateNote = (note: Note = {}) => dispatch(duplicateNote(note)).unwrap()
+
   const handleUpdateNote = (note: Note) => dispatch(updateNote(note)).unwrap()
 
   const handleDeleteNote = (note: Note) => dispatch(deleteNote(note)).unwrap()
@@ -20,6 +28,7 @@ function useNote() {
   return {
     handleGetNote,
     handleCreateNote,
+    handleDuplicateNote,
     handleUpdateNote,
     handleDeleteNote,
     selected,

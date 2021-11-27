@@ -3,6 +3,7 @@ import { Note } from 'notes-types'
 import {
   createNote,
   deleteNote,
+  duplicateNote,
   getNote,
   getNotes,
   updateNote
@@ -64,18 +65,24 @@ const notesSlice = createSlice({
       state.notes.push(payload)
       sortNotes(state.notes, state.sortBy, state.direction)
     },
+    [duplicateNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
+      payload.date = new Date(payload.date || new Date())
+      state.notes.push(payload)
+      sortNotes(state.notes, state.sortBy, state.direction)
+    },
     [getNotes.pending.toString()]: (state) => {
       state.loading = true
     },
     [getNotes.fulfilled.toString()]: (state, { payload }: PayloadAction<Note[]>) => {
-      console.log(payload)
-
-      state.notes = state.notes.concat(
-        payload.map((note) => ({
+      const ids = state.notes.map((note) => note.id) as string[]
+      payload = payload
+        .filter((note) => !ids.includes(note.id as string))
+        .map((note) => ({
           ...note,
           date: new Date(note.date || new Date())
         }))
-      )
+
+      state.notes = state.notes.concat(payload)
 
       state.offset = state.notes.length
       state.loading = false

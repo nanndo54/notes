@@ -13,7 +13,7 @@ import { Link } from 'wouter'
 
 const NoteItem = (note: Note) => {
   const { id, title, content, date } = note
-  const { selected, handleDeleteNote } = useNote()
+  const { selected, handleDeleteNote, handleDuplicateNote } = useNote()
   const dispatch = useAppDispatch()
 
   const isMenuOpenned = id === selected
@@ -26,7 +26,9 @@ const NoteItem = (note: Note) => {
     dispatch(setSelectedNote(isMenuOpenned ? '' : (id as string)))
   }
 
-  const stringDate = `${date?.getMonth()}/${date?.getDay()} ${date?.getHours()}:${date?.getMinutes()}`
+  const stringDate = `${date?.getMonth()}/${date?.getDay()} ${date?.getHours()}:${
+    date && date.getMinutes() < 10 ? '0' : ''
+  }${date?.getMinutes()}`
 
   const menuRef = useRef<HTMLDivElement>(null)
 
@@ -34,6 +36,10 @@ const NoteItem = (note: Note) => {
 
   const handleDeleteButton = () => {
     handleDeleteNote(note).then(() => toast.success('Note deleted'))
+  }
+
+  const handleDuplicateButton = () => {
+    handleDuplicateNote(note).then(() => toast.success('Note duplicated'))
   }
 
   return (
@@ -49,7 +55,7 @@ const NoteItem = (note: Note) => {
         <Button variant='danger' onClick={handleDeleteButton}>
           Delete
         </Button>
-        <Button>Duplicate</Button>
+        <Button onClick={handleDuplicateButton}>Duplicate</Button>
         <Button>Details</Button>
       </div>
       <Link to={`/notes/${id}`} className={styles.note}>

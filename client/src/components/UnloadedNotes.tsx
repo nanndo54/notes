@@ -11,7 +11,7 @@ const UnloadedNotes = () => {
   const intersected = useIntersectionObserver(
     ref,
     {
-      threshold: 0.3
+      threshold: 0.2
     },
     true,
     false
@@ -40,7 +40,7 @@ const UnloadedNotes = () => {
       <NoteLoader />
     </div>
   ) : (
-    <h1>. . .</h1>
+    <></>
   )
 }
 

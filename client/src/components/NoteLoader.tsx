@@ -13,10 +13,10 @@ const NoteLoader: FC<IContentLoaderProps> = (props) => (
     foregroundColor='#eee'
     {...props}
   >
-    <rect x='5' y='17' rx='30' ry='30' width='237' height='230' />
-    <rect x='263' y='17' rx='30' ry='30' width='237' height='127' />
-    <rect x='263' y='300' rx='30' ry='30' width='237' height='212' />
-    <rect x='5' y='300' rx='30' ry='30' width='237' height='163' />
+    <rect x='5' y='0' rx='30' ry='30' width='237' height='230' />
+    <rect x='263' y='0' rx='30' ry='30' width='237' height='127' />
+    <rect x='263' y='290' rx='30' ry='30' width='237' height='212' />
+    <rect x='5' y='290' rx='30' ry='30' width='237' height='163' />
   </ContentLoader>
 )
 
