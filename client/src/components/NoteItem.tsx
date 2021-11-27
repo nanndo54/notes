@@ -54,8 +54,8 @@ const NoteItem = (note: Note) => {
       </div>
       <Link to={`/notes/${id}`} className={styles.note}>
         <small>{stringDate}</small>
-        <h3>{title}</h3>
-        <p>{content}</p>
+        <h3>{title || '. . .'}</h3>
+        <p>{content || '. . .'}</p>
       </Link>
     </div>
   )

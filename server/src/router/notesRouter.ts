@@ -4,11 +4,13 @@ import { Note } from 'notes-types'
 import NoteModel from '../models/NoteModel.js'
 
 const notesRouter = (app: Application) => {
-  app.get('/api/notes/(:sortby([a-z]+))&(:dir(-?1))', (req, res) => {
+  app.get('/api/notes/(:sortby([a-z]+))&(:dir(-?1))/:offset?', (req, res) => {
     const sortby = req.params.sortby || 'date'
     const dir = Number(req.params.dir) || -1
+    const offset = Number(req.params.offset) || 0
 
-    NoteModel.find({})
+    NoteModel.find()
+      .skip(offset)
       .sort({ [sortby]: dir })
       .then((notes) => res.send(notes))
       .catch((err) => res.status(400).send(err))
