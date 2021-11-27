@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from 'store'
 import styles from 'styles/UnloadedNotes.module.css'
 
 const UnloadedNotes = () => {
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const intersected = useIntersectionObserver(
     ref,
     {
@@ -40,7 +40,7 @@ const UnloadedNotes = () => {
       <NoteLoader />
     </div>
   ) : (
-    <p>no more notes</p>
+    <h1>. . .</h1>
   )
 }
 
