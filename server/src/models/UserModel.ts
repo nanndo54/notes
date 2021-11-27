@@ -3,12 +3,14 @@ import { User } from 'notes-types'
 
 const { model, Schema } = moongose
 
-const schema = new Schema<User>({
+const definition = {
   username: { type: String, required: true, unique: true, dropDups: true, trim: true },
   password: { type: String, trim: true },
   email: { type: String, trim: true },
   photo: String
-})
+}
+
+const schema = new Schema<User>(definition)
 
 schema.set('toJSON', {
   transform: (doc, ret) => {
@@ -22,3 +24,5 @@ schema.set('toJSON', {
 const UserModel = model<User>('User', schema)
 
 export default UserModel
+
+export const userAttributes = Object.keys(definition)

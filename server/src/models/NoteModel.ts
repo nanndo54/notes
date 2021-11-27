@@ -3,11 +3,13 @@ import { Note } from 'notes-types'
 
 const { model, Schema } = moongose
 
-const schema = new Schema<Note>({
+const definition = {
   title: String,
   content: String,
   date: { type: Date, default: () => new Date() }
-})
+}
+
+const schema = new Schema<Note>(definition)
 
 schema.set('toJSON', {
   transform: (doc, ret) => {
@@ -20,3 +22,5 @@ schema.set('toJSON', {
 const NoteModel = model<Note>('Note', schema)
 
 export default NoteModel
+
+export const noteAttributes = Object.keys(definition)
