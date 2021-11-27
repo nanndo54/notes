@@ -12,18 +12,22 @@ interface State {
   notes: Note[]
   sortBy: string
   direction: number
+  offset: number
   selected: string
   needed: boolean
   loading: boolean
+  available: boolean
 }
 
 const initialState: State = {
   notes: [],
   sortBy: 'date',
   direction: -1,
+  offset: 0,
   selected: '',
   needed: false,
-  loading: false
+  loading: false,
+  available: true
 }
 
 const notesSlice = createSlice({
@@ -32,9 +36,15 @@ const notesSlice = createSlice({
   reducers: {
     changeSortBy: (state, action: PayloadAction<string>) => {
       state.sortBy = action.payload
+      state.notes = []
+      state.offset = 0
+      state.available = true
     },
     triggerDirection: (state) => {
       state.direction *= -1
+      state.notes = []
+      state.offset = 0
+      state.available = true
     },
     setSelectedNote: (state, action: PayloadAction<string>) => {
       state.selected = action.payload
@@ -44,6 +54,8 @@ const notesSlice = createSlice({
     },
     clearNotes: (state) => {
       state.notes = []
+      state.offset = 0
+      state.available = true
     }
   },
   extraReducers: {
@@ -56,12 +68,18 @@ const notesSlice = createSlice({
       state.loading = true
     },
     [getNotes.fulfilled.toString()]: (state, { payload }: PayloadAction<Note[]>) => {
-      state.notes = payload.map((note) => ({
-        ...note,
-        date: new Date(note.date || new Date())
-      }))
+      console.log(payload)
 
+      state.notes = state.notes.concat(
+        payload.map((note) => ({
+          ...note,
+          date: new Date(note.date || new Date())
+        }))
+      )
+
+      state.offset = state.notes.length
       state.loading = false
+      if (!payload.length) state.available = false
     },
     [getNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
       payload.date = new Date(payload.date || new Date())
@@ -84,7 +102,7 @@ const notesSlice = createSlice({
 
 const sortNotes = (notes: Array<any>, sortBy: string, direction: number) => {
   notes.sort((a, b) =>
-    (a[sortBy] as string) < (b[sortBy] as string) ? direction : direction * -1
+    (a[sortBy] as string) < (b[sortBy] as string) ? direction * -1 : direction
   )
 }
 

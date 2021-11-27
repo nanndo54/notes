@@ -8,11 +8,11 @@ import styles from 'styles/SortButton.module.css'
 const attributes = ['date', 'title', 'content']
 
 const SortButtons = () => {
-  const { sortBy: sortby, direction } = useAppSelector((state) => state.notes)
+  const { sortBy, direction } = useAppSelector((state) => state.notes)
   const dispatch = useAppDispatch()
 
   const handleChangeSortby = () => {
-    const index = attributes.indexOf(sortby)
+    const index = attributes.indexOf(sortBy)
     dispatch(
       changeSortBy(
         index === attributes.length - 1 ? attributes[0] : attributes[index + 1]
@@ -27,9 +27,9 @@ const SortButtons = () => {
       <Button
         variant='transparent'
         onClick={handleChangeSortby}
-        className={styles.sortby}
+        className={styles.sortBy}
       >
-        Sort by {sortby}
+        Sort by {sortBy}
       </Button>
       <Button
         variant='transparent'
