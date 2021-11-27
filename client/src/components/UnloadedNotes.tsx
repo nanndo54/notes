@@ -1,3 +1,4 @@
+import NoteLoader from 'components/NoteLoader'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
 import { useEffect, useRef } from 'react'
 import { toast } from 'react-toastify'
@@ -10,7 +11,7 @@ const UnloadedNotes = () => {
   const intersected = useIntersectionObserver(
     ref,
     {
-      threshold: 0.8
+      threshold: 0.3
     },
     true,
     false
@@ -34,12 +35,12 @@ const UnloadedNotes = () => {
     )
   }
 
-  return (
-    available && (
-      <div ref={ref} className={styles.base}>
-        {intersected ? 'ya!' : 'cargando'}
-      </div>
-    )
+  return available ? (
+    <div ref={ref} className={styles.base}>
+      <NoteLoader />
+    </div>
+  ) : (
+    <p>no more notes</p>
   )
 }
 

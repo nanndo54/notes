@@ -1,0 +1,9 @@
+.base {
+  height: 500;
+}
+
+@media (max-width: 600px) {
+  .base {
+    height: 100%;
+  }
+}

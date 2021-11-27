@@ -17,6 +17,7 @@
     "axios": "0.24.0",
     "notes-types": "1.0.0",
     "react": "17.0.0",
+    "react-content-loader": "^6.0.3",
     "react-dom": "17.0.0",
     "react-hook-form": "7.9.0",
     "react-redux": "7.2.4",
