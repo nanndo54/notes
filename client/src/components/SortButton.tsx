@@ -1,13 +1,14 @@
 import Button from 'components/Button'
 import Icon from 'components/Icon'
 import ICONS from 'constants/icons'
+import { FC } from 'react'
 import { changeSortBy, triggerDirection } from 'slices/notesSlice'
 import { useAppDispatch, useAppSelector } from 'store'
 import styles from 'styles/SortButton.module.css'
 
 const attributes = ['date', 'title', 'content']
 
-const SortButtons = () => {
+const SortButtons: FC = () => {
   const { sortBy, direction } = useAppSelector((state) => state.notes)
   const dispatch = useAppDispatch()
 

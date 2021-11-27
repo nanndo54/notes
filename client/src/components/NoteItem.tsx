@@ -4,14 +4,14 @@ import ICONS from 'constants/icons'
 import useNote from 'hooks/useNote'
 import useOutsideAlerter from 'hooks/useOutsideAleter'
 import { Note } from 'notes-types'
-import { useRef } from 'react'
+import { FC, useRef } from 'react'
 import { toast } from 'react-toastify'
 import { setSelectedNote } from 'slices/notesSlice'
 import { useAppDispatch } from 'store'
 import styles from 'styles/NoteItem.module.css'
 import { Link } from 'wouter'
 
-const NoteItem = (note: Note) => {
+const NoteItem: FC<Note> = (note) => {
   const { id, title, content, date } = note
   const { selected, handleDeleteNote, handleDuplicateNote } = useNote()
   const dispatch = useAppDispatch()

@@ -3,9 +3,10 @@ import NoteGrid from 'components/NoteGrid'
 import SortButton from 'components/SortButton'
 import Welcome from 'components/Welcome'
 import useNotesPage from 'hooks/useNotesPage'
+import { FC } from 'react'
 import styles from 'styles/NotesPage.module.css'
 
-const NotesPage = () => {
+const NotesPage: FC = () => {
   useNotesPage()
 
   return (

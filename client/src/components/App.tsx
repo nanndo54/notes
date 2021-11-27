@@ -1,13 +1,14 @@
-import Content from 'components/Content'
+import AppRoutes from 'components/AppRoutes'
 import Footer from 'components/Footer'
 import Icon from 'components/Icon'
 import Navbar from 'components/Navbar'
 import ICONS from 'constants/icons'
 import useApp from 'hooks/useApp'
+import { FC } from 'react'
 import { Flip, ToastContainer } from 'react-toastify'
 import styles from 'styles/App.module.css'
 
-const App = () => {
+const App: FC = () => {
   useApp()
 
   return (
@@ -22,7 +23,7 @@ const App = () => {
         transition={Flip}
       />
       <Navbar />
-      <Content />
+      <AppRoutes />
       <Footer />
     </div>
   )

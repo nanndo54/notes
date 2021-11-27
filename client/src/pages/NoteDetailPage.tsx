@@ -4,7 +4,7 @@ import useDebounce from 'hooks/useDebounce'
 import useNote from 'hooks/useNote'
 import useNoteDetails from 'hooks/useNoteDetails'
 import { Note } from 'notes-types'
-import { useMemo } from 'react'
+import { FC, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import TextareaAutosize from 'react-textarea-autosize'
 import { toast } from 'react-toastify'
@@ -14,7 +14,7 @@ interface Props {
   id: string
 }
 
-const NoteDetailPage = ({ id: initialId }: Props) => {
+const NoteDetailPage: FC<Props> = ({ id: initialId }) => {
   const placeholder = useMemo(getPlaceholder, [])
 
   const { register, getValues, setValue } = useForm<Note>()

@@ -1,9 +1,10 @@
 import NoteItem from 'components/NoteItem'
 import UnloadedNotes from 'components/UnloadedNotes'
+import { FC } from 'react'
 import { useAppSelector } from 'store'
 import styles from 'styles/NoteGrid.module.css'
 
-const NoteGrid = () => {
+const NoteGrid: FC = () => {
   const { notes } = useAppSelector((state) => state.notes)
 
   return (

@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import styles from 'styles/Icon.module.css'
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
   id?: string
 }
 
-const Icon = ({ name, color = 'unset', className = '', id = '' }: Props) => (
+const Icon: FC<Props> = ({ name, color = 'unset', className = '', id = '' }) => (
   <svg
     className={`${styles.svg} ${className}`}
     height='100%'

@@ -1,7 +1,8 @@
+import { FC } from 'react'
 import styles from 'styles/Footer.module.css'
 import { Link } from 'wouter'
 
-const Footer = () => (
+const Footer: FC = () => (
   <footer className={styles.base}>
     <ul className={styles.section}>
       <li className={styles.item}>
@@ -13,10 +14,10 @@ const Footer = () => (
     </ul>
     <ul className={styles.section}>
       <li className={styles.item}>
-        <Link to='/'>pabloc54</Link>
+        <a href='https://github.com/pabloc54'>pabloc54</a>
       </li>
       <li className={styles.item}>
-        <Link to='/'>Open source</Link>
+        <a href='https://github.com/pabloc54/notes'>Open source</a>
       </li>
     </ul>
   </footer>

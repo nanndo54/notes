@@ -6,10 +6,11 @@ import NoteDetailPage from 'pages/NoteDetailPage'
 import NotesPage from 'pages/NotesPage'
 import NotFoundPage from 'pages/NotFoundPage'
 import SignupPage from 'pages/SignupPage'
-import styles from 'styles/Content.module.css'
+import { FC } from 'react'
+import styles from 'styles/AppRoutes.module.css'
 import { Redirect, Route, Switch } from 'wouter'
 
-const Routes = () => {
+const AppRoutes: FC = () => {
   const { isUserLoggedIn } = useUser()
 
   const routes = [
@@ -66,4 +67,4 @@ const Routes = () => {
   )
 }
 
-export default Routes
+export default AppRoutes

@@ -5,11 +5,11 @@ import { links, loggedInLinks } from 'constants/links'
 import useNavbarMenu from 'hooks/useNavbarMenu'
 import useOutsideAlerter from 'hooks/useOutsideAleter'
 import useUser from 'hooks/useUser'
-import { useRef } from 'react'
+import { FC, useRef } from 'react'
 import styles from 'styles/NavbarMenu.module.css'
 import { Link } from 'wouter'
 
-const NavbarMenu = () => {
+const NavbarMenu: FC = () => {
   const { isUserLoggedIn, handleLogoutUser } = useUser()
   const { isMenuOpenned, handleToggleMenu } = useNavbarMenu()
 

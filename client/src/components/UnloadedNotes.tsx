@@ -1,12 +1,11 @@
 import NoteLoader from 'components/NoteLoader'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
-import { useEffect, useRef } from 'react'
-import { toast } from 'react-toastify'
+import { FC, useEffect, useRef } from 'react'
 import { getNotes } from 'services/noteServices'
 import { useAppDispatch, useAppSelector } from 'store'
 import styles from 'styles/UnloadedNotes.module.css'
 
-const UnloadedNotes = () => {
+const UnloadedNotes: FC = () => {
   const ref = useRef<HTMLDivElement>(null)
   const intersected = useIntersectionObserver(
     ref,
@@ -24,15 +23,12 @@ const UnloadedNotes = () => {
 
   useEffect(() => {
     if (!intersected || loading) return
-    console.log('loading more')
-
     handleGetNotes()
   }, [intersected])
+
   const handleGetNotes = () => {
     if (!available) return
-    dispatch(getNotes({ sortBy, direction, offset })).then(() =>
-      toast.success('Notes loaded')
-    )
+    dispatch(getNotes({ sortBy, direction, offset }))
   }
 
   return available ? (

@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react'
+import { ButtonHTMLAttributes, FC } from 'react'
 import styles from 'styles/Button.module.css'
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -6,7 +6,12 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'danger' | 'transparent'
 }
 
-const Button = ({ className = '', children, variant = 'secondary', ...props }: Props) => (
+const Button: FC<Props> = ({
+  className = '',
+  children,
+  variant = 'secondary',
+  ...props
+}) => (
   <button className={`${styles.base} ${styles[variant]} ${className}`} {...props}>
     {children}
   </button>

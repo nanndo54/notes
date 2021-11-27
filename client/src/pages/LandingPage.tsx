@@ -1,7 +1,8 @@
+import { FC } from 'react'
 import styles from 'styles/LandingPage.module.css'
 import { Link } from 'wouter'
 
-const LandingPage = () => (
+const LandingPage: FC = () => (
   <div className={styles.base}>
     <p>Notes is the best app ever.</p>
     <Link to='/about'>About notes</Link>

@@ -1,6 +1,7 @@
 import Button from 'components/Button'
 import useUser from 'hooks/useUser'
 import { User } from 'notes-types'
+import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import styles from 'styles/LoginPage.module.css'
 
@@ -8,7 +9,7 @@ interface Form extends User {
   password: string
 }
 
-const LoginPage = () => {
+const LoginPage: FC = () => {
   const {
     handleSubmit,
     formState: { errors },

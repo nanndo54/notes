@@ -1,4 +1,5 @@
 import useUser from 'hooks/useUser'
+import { FC } from 'react'
 import styles from 'styles/NotFoundPage.module.css'
 import { Link } from 'wouter'
 
@@ -6,7 +7,7 @@ interface Props {
   page: String
 }
 
-const NotFoundPage = ({ page }: Props) => {
+const NotFoundPage: FC<Props> = ({ page }) => {
   const { isUserLoggedIn } = useUser()
 
   return (

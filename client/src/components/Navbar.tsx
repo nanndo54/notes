@@ -4,10 +4,11 @@ import NavbarMenu from 'components/NavbarMenu'
 import ICONS from 'constants/icons'
 import useNavbarMenu from 'hooks/useNavbarMenu'
 import useUser from 'hooks/useUser'
+import { FC } from 'react'
 import styles from 'styles/Navbar.module.css'
 import { Link } from 'wouter'
 
-const Navbar = () => {
+const Navbar: FC = () => {
   const { isUserLoggedIn } = useUser()
   const { handleToggleMenu } = useNavbarMenu()
 
