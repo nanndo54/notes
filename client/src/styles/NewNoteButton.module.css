@@ -4,7 +4,8 @@
   bottom: 50px;
   right: 10%;
 
-  background-color: #bbb;
+  box-shadow: 0 0 4px #333;
+  background-color: #ddd;
   border-radius: 50%;
 
   padding: 12px;

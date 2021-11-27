@@ -49,8 +49,8 @@ const NoteItem = (note: Note) => {
         <Button variant='danger' onClick={handleDeleteButton}>
           Delete
         </Button>
-        <Button variant='transparent'>Duplicate</Button>
-        <Button variant='transparent'>Details</Button>
+        <Button>Duplicate</Button>
+        <Button>Details</Button>
       </div>
       <Link to={`/notes/${id}`} className={styles.note}>
         <small>{stringDate}</small>
