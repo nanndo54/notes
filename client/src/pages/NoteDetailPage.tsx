@@ -7,7 +7,6 @@ import { Note } from 'notes-types'
 import { FC, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import TextareaAutosize from 'react-textarea-autosize'
-import { toast } from 'react-toastify'
 import styles from 'styles/NoteDetailPage.module.css'
 
 interface Props {
@@ -17,11 +16,12 @@ interface Props {
 const NoteDetailPage: FC<Props> = ({ id: initialId }) => {
   const placeholder = useMemo(getPlaceholder, [])
 
-  const { register, getValues, setValue } = useForm<Note>()
+  const { register, getValues, setValue, setFocus } = useForm<Note>()
 
   const id = useNoteDetails(initialId, (note) => {
     setValue('title', note.title)
     setValue('content', note.content)
+    setFocus('title')
   })
 
   const { handleUpdateNote } = useNote()
@@ -29,8 +29,7 @@ const NoteDetailPage: FC<Props> = ({ id: initialId }) => {
   const handleChangeForm = useDebounce(() => {
     const note = getValues()
     note.id = id
-
-    handleUpdateNote(note).then(() => toast.success('Note updated'))
+    handleUpdateNote(note)
   }, 1000)
 
   return (

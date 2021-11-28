@@ -10,13 +10,12 @@ const UnloadedNotes: FC = () => {
   const intersected = useIntersectionObserver(
     ref,
     {
-      threshold: 0.2
+      threshold: 0.1
     },
-    true,
     false
   )
 
-  const { sortBy, direction, offset, loading, available } = useAppSelector(
+  const { notes, sortBy, direction, offset, loading, available } = useAppSelector(
     (state) => state.notes
   )
   const dispatch = useAppDispatch()
@@ -35,6 +34,8 @@ const UnloadedNotes: FC = () => {
     <div ref={ref} className={styles.base}>
       <NoteLoader />
     </div>
+  ) : notes.length == 0 ? (
+    <h4 className={styles.emptyPhrase}>So empty here... Add a new note!</h4>
   ) : (
     <></>
   )

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { User } from 'notes-types'
-import { getUser, loginUser } from 'services/userServices'
+import { createUser, getUser, loginUser } from 'services/userServices'
 
 interface Token {
   token: string
@@ -37,6 +37,9 @@ const userSlice = createSlice({
       setToken(state.token)
     },
     [loginUser.rejected.toString()]: (state, { payload }: PayloadAction<Error>) => {
+      throw payload
+    },
+    [createUser.rejected.toString()]: (state, { payload }: PayloadAction<Error>) => {
       throw payload
     }
   }

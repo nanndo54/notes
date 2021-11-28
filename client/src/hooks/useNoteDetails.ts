@@ -16,6 +16,7 @@ function useNoteDetails(initialId: string, callback: (note: Note) => void) {
       handleCreateNote().then((note) => {
         history.replaceState({ new: note.id }, '', `/notes/${note.id}`)
         setId(note.id)
+        callback(note)
       })
       return
     }
@@ -23,6 +24,8 @@ function useNoteDetails(initialId: string, callback: (note: Note) => void) {
     handleGetNote(initialId)
       .then((note) => callback(note))
       .catch(() => setLocation('/notes'))
+
+    return () => setId('')
   }, [loading])
 
   return id

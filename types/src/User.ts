@@ -1,5 +1,3 @@
-import Note from './Note'
-
 interface User {
   /** unique id of the user */
   id?: string
@@ -11,8 +9,7 @@ interface User {
   email?: string
   /** optional photo of the user */
   photo?: string
-  /** notes of the user */
-  notes?: Note[]
+  notes?: string[]
 }
 
 export default User

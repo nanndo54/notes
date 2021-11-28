@@ -27,7 +27,7 @@ function useUser() {
   const handleSignupUser = (user: User) => {
     dispatch(createUser(user))
       .then(() => {
-        toast.success('User created successfully!\nNow sign in')
+        toast.success('User created\nsuccessfully!\nNow sign in')
         setLocation('/login')
       })
       .catch(() => {

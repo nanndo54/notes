@@ -1,26 +1,22 @@
 import { RefObject, useEffect, useState } from 'react'
 
-function useIntersectionObserver(
-  ref: RefObject<HTMLElement>,
-  options: any,
-  fallback: boolean,
-  once = true
-) {
-  const [intersected, setIntersected] = useState(!fallback)
+function useIntersectionObserver(ref: RefObject<HTMLElement>, options: any, once = true) {
+  const [intersected, setIntersected] = useState(false)
 
   // eslint-disable-next-line no-unused-vars
   const updateEntry: (arr: any) => void = ([entry]) => {
     setIntersected(entry?.isIntersecting)
+    setIntersected(false)
   }
 
   useEffect(() => {
     const hasIOSupport = !!window.IntersectionObserver
-    const node = ref?.current
+    const element = ref?.current
 
-    if (!hasIOSupport || !node || (once && intersected)) return
+    if (!hasIOSupport || !element || (once && intersected)) return
 
     const observer = new IntersectionObserver(updateEntry, options)
-    observer.observe(node)
+    observer.observe(element)
 
     return () => observer.disconnect()
   }, [ref, options])

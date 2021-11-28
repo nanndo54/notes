@@ -8,7 +8,7 @@ const NoteGrid: FC = () => {
   const { notes } = useAppSelector((state) => state.notes)
 
   return (
-    <div>
+    <>
       {notes.length > 0 && (
         <div className={styles.base}>
           {notes.map((note) => (
@@ -17,7 +17,7 @@ const NoteGrid: FC = () => {
         </div>
       )}
       <UnloadedNotes />
-    </div>
+    </>
   )
 }
 

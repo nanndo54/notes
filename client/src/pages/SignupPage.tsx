@@ -1,7 +1,7 @@
 import Button from 'components/Button'
 import useUser from 'hooks/useUser'
 import { User } from 'notes-types'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import styles from 'styles/SignupPage.module.css'
 
@@ -9,8 +9,13 @@ const SignupPage: FC = () => {
   const {
     handleSubmit,
     formState: { errors },
-    register
+    register,
+    setFocus
   } = useForm<User>()
+
+  useEffect(() => {
+    setFocus('username')
+  }, [])
 
   const { handleSignupUser } = useUser()
 
