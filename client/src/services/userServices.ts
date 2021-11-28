@@ -5,27 +5,25 @@ import { User } from 'notes-types'
 
 const USER_API_URL = `${API_URL}/user`
 
-export const createUser = createAsyncThunk('notes/create', async (user: User) => {
+export const createUser = createAsyncThunk('user/create', async (user: User) => {
   const response = await axios.post(USER_API_URL, user)
   if (response.status !== 201) throw new Error('Error registering user')
   return response.data
 })
 
-export const getUser = createAsyncThunk('notes/get', async (id: string) => {
-  const response = await axios.get(`${USER_API_URL}/${id}`)
+export const getUser = createAsyncThunk('user/get', async () => {
+  const response = await axios.get(USER_API_URL)
   if (response.status !== 200) throw new Error('Error getting user')
   return response.data
 })
 
-export const loginUser = createAsyncThunk('notes/login', async (user: User) => {
-  const response = await axios.get(
-    `${USER_API_URL}/login/${user.username}&${user.password}`
-  )
+export const loginUser = createAsyncThunk('user/login', async (user: User) => {
+  const response = await axios.post(`${USER_API_URL}/login`, user)
   if (response.status !== 200) throw new Error('Error validating user')
   return response.data
 })
 
-export const updateNote = createAsyncThunk('notes/update', async (user: User) => {
+export const updateNote = createAsyncThunk('user/update', async (user: User) => {
   const response = await axios.put(`${USER_API_URL}/${user.id}`, user)
   if (response.status !== 200) throw new Error('Error updating user')
   return response.data

@@ -3,7 +3,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { combineReducers } from 'redux'
 import appSlice from 'slices/appSlice'
 import notesSlice from 'slices/notesSlice'
-import userSlice from 'slices/userSlice'
+import userSlice, { setToken } from 'slices/userSlice'
 
 const reducer = combineReducers({
   app: appSlice,
@@ -23,3 +23,5 @@ export type AppDispatch = typeof store.dispatch
 export const useAppDispatch = () => useDispatch<AppDispatch>()
 
 export default store
+
+setToken(store.getState().user.token)

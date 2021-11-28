@@ -1,27 +1,53 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import axios from 'axios'
 import { User } from 'notes-types'
+import { getUser, loginUser } from 'services/userServices'
 
-const initialState: User = {
-  username: localStorage.getItem('user') || ''
+interface Token {
+  token: string
+}
+
+interface State {
+  user?: User
+  token: string
+}
+
+const initialState: State = {
+  token: localStorage.getItem('token') || ''
 }
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    loginUser: (state, action) => {
-      state.username = action.payload.username
-      save(state.username)
-    },
     logoutUser: (state) => {
-      state.username = ''
-      save(state.username)
+      state.user = undefined
+      state.token = ''
+      saveToken()
+    }
+  },
+  extraReducers: {
+    [getUser.fulfilled.toString()]: (state, { payload }: PayloadAction<User>) => {
+      state.user = payload
+    },
+    [loginUser.fulfilled.toString()]: (state, { payload }: PayloadAction<Token>) => {
+      state.token = payload.token
+
+      saveToken(state.token)
+      setToken(state.token)
+    },
+    [loginUser.rejected.toString()]: (state, { payload }: PayloadAction<Error>) => {
+      throw payload
     }
   }
 })
 
-const save = (user: string) => localStorage.setItem('user', user)
+const saveToken = (token: string = '') => localStorage.setItem('token', token)
 
-export const { loginUser, logoutUser } = userSlice.actions
+export const setToken = (token: string) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`
+}
+
+export const { logoutUser } = userSlice.actions
 
 export default userSlice.reducer
