@@ -1,32 +1,14 @@
 import { Router } from 'express'
-import jwt from 'jsonwebtoken'
 import moongose from 'mongoose'
 import { Note } from 'notes-types'
 
+import authenticationMiddleware from '../middlewares/authenticationMiddleware.js'
 import NoteModel, { noteAttributes } from '../models/NoteModel.js'
 import UserModel from '../models/UserModel.js'
 
 const notesRouter = Router()
 
-notesRouter.use((req, res, next) => {
-  try {
-    const authorization = req.headers.authorization
-    if (!authorization || !authorization.toLowerCase().startsWith('bearer '))
-      throw new Error()
-
-    const token = authorization.substring(7)
-    const sign = process.env.JWT_SECRET as jwt.Secret
-
-    const decodedToken = jwt.verify(token, sign) as jwt.JwtPayload
-    if (!decodedToken || !decodedToken.id) throw new Error()
-
-    req.payload = decodedToken
-
-    next()
-  } catch (err) {
-    res.status(401).send({ error: 'Unauthorized' })
-  }
-})
+notesRouter.use(authenticationMiddleware)
 
 notesRouter.get('/(:sortBy([a-zA-Z]+))&(:dir(-?1))/:offset(\\d+)?', async (req, res) => {
   const sortBy = req.params.sortBy || 'date'
@@ -42,8 +24,6 @@ notesRouter.get('/(:sortBy([a-zA-Z]+))&(:dir(-?1))/:offset(\\d+)?', async (req, 
       .skip(offset)
       .limit(10)
       .sort({ [sortBy]: dir })
-
-    console.log(notes)
 
     res.send(notes)
   } catch (err) {

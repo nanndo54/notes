@@ -3,6 +3,7 @@ import { Router } from 'express'
 import jwt from 'jsonwebtoken'
 import { User } from 'notes-types'
 
+import authenticationMiddleware from '../middlewares/authenticationMiddleware.js'
 import UserModel from '../models/UserModel.js'
 
 const userRouter = Router()
@@ -17,8 +18,8 @@ userRouter.post('/', async (req, res) => {
   user.password = password
 
   try {
-    const savedUser = await user.save()
-    res.status(201).send(savedUser)
+    await user.save()
+    res.status(201).send()
   } catch (err) {
     res.status(400).send(err)
   }
@@ -36,23 +37,22 @@ userRouter.post('/login', async (req, res) => {
       return res.status(401).send({ error: 'User or password not correct' })
 
     const payload = {
-      id: user._id,
-      username: user.username
+      id: user._id
     }
 
     const token = jwt.sign(payload, process.env.JWT_SECRET as jwt.Secret)
 
-    res.send({ ...user.toJSON(), token })
+    res.send({ token })
   } catch (err) {
     res.status(400).send(err)
   }
 })
 
-userRouter.get('/:id([a-z\\d]+)', async (req, res) => {
-  const id = req.params.id
+userRouter.get('/', authenticationMiddleware, async (req, res) => {
+  const userId = req.payload.id
 
   try {
-    const user = await UserModel.findById(id)
+    const user = await UserModel.findById(userId)
     if (!user) return res.status(404).send({ error: 'User not found' })
 
     res.send(user)
@@ -61,12 +61,12 @@ userRouter.get('/:id([a-z\\d]+)', async (req, res) => {
   }
 })
 
-userRouter.put('/:id([a-z\\d]+)', async (req, res) => {
-  const id = req.params.id
+userRouter.put('/', authenticationMiddleware, async (req, res) => {
   const user: User = req.body
+  const userId = req.payload.id
 
   try {
-    const updatedUser = await UserModel.findByIdAndUpdate(id, user, { new: true })
+    const updatedUser = await UserModel.findByIdAndUpdate(userId, user, { new: true })
     if (!updatedUser) return res.status(404).send({ error: 'User not found' })
 
     res.send(updatedUser)
@@ -75,11 +75,11 @@ userRouter.put('/:id([a-z\\d]+)', async (req, res) => {
   }
 })
 
-userRouter.delete('/:id([a-z\\d]+)', async (req, res) => {
-  const id = req.params.id
+userRouter.delete('/', async (req, res) => {
+  const userId = req.payload.id
 
   try {
-    const user = await UserModel.findByIdAndRemove(id)
+    const user = await UserModel.findByIdAndRemove(userId)
     if (!user) return res.status(404).send({ error: 'User not found' })
 
     res.send(user)
