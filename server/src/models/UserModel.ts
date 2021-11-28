@@ -7,6 +7,7 @@ const definition = {
   username: { type: String, required: true, unique: true, dropDups: true, trim: true },
   password: { type: String, trim: true },
   email: { type: String, trim: true },
+  notes: [{ type: Schema.Types.ObjectId, ref: 'Note' }],
   photo: String
 }
 

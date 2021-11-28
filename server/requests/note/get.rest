@@ -1,5 +1,7 @@
 GET http://localhost:3000/api/notes/date&-1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYTJiY2M3YjM0NTFmYjhiMjBkNDA1YSIsInVzZXJuYW1lIjoicGFibG8iLCJpYXQiOjE2MzgwNjg0NTV9.St9f8CTigF5MOR5XcS8uySAnOz88r-gA4YqLR2pve0A
 
 ###
 
-GET http://localhost:3000/api/notes/61a1ea28b84ea331ce2949b4
+GET http://localhost:3000/api/notes/61a2fdcae5965ba6141c5c07
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYTJiY2M3YjM0NTFmYjhiMjBkNDA1YSIsInVzZXJuYW1lIjoicGFibG8iLCJpYXQiOjE2MzgwNjg0NTV9.St9f8CTigF5MOR5XcS8uySAnOz88r-gA4YqLR2pve0A

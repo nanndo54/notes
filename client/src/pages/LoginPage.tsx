@@ -5,20 +5,16 @@ import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import styles from 'styles/LoginPage.module.css'
 
-interface Form extends User {
-  password: string
-}
-
 const LoginPage: FC = () => {
   const {
     handleSubmit,
     formState: { errors },
     register
-  } = useForm<Form>()
+  } = useForm<User>()
 
   const { handleLoginUser } = useUser()
 
-  const handleSubmitForm: SubmitHandler<Form> = (user) => {
+  const handleSubmitForm: SubmitHandler<User> = (user) => {
     handleLoginUser(user)
   }
 

@@ -1,3 +1,5 @@
+import User from './User'
+
 interface Note {
   /** unique id of the note */
   id?: string
@@ -7,6 +9,8 @@ interface Note {
   content?: string
   /** date of the note */
   date?: Date
+  /** user owner of the note */
+  user?: User
 }
 
 export default Note

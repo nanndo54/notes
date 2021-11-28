@@ -1,9 +1,12 @@
 POST http://localhost:3000/api/notes
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYTJiY2M3YjM0NTFmYjhiMjBkNDA1YSIsInVzZXJuYW1lIjoicGFibG8iLCJpYXQiOjE2MzgwNjg0NTV9.St9f8CTigF5MOR5XcS8uySAnOz88r-gA4YqLR2pve0A
 
 {
+  "title": "testing on rest client"
 }
 
 ###
 
 POST http://localhost:3000/api/notes/61a1ea28b84ea331ce2949b4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxYTJiY2M3YjM0NTFmYjhiMjBkNDA1YSIsInVzZXJuYW1lIjoicGFibG8iLCJpYXQiOjE2MzgwNjg0NTV9.St9f8CTigF5MOR5XcS8uySAnOz88r-gA4YqLR2pve0A

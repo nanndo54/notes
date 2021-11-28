@@ -91,10 +91,6 @@ const notesSlice = createSlice({
     [getNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
       payload.date = new Date(payload.date || new Date())
     },
-    [deleteNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
-      const index = state.notes.findIndex((note) => note.id === payload.id)
-      if (index !== -1) state.notes.splice(index, 1)
-    },
     [updateNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
       payload.date = new Date(payload.date || new Date())
       const index = state.notes.findIndex((note) => note.id === payload.id)
@@ -103,6 +99,10 @@ const notesSlice = createSlice({
         state.notes[index] = payload
         sortNotes(state.notes, state.sortBy, state.direction)
       }
+    },
+    [deleteNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
+      const index = state.notes.findIndex((note) => note.id === payload.id)
+      if (index !== -1) state.notes.splice(index, 1)
     }
   }
 })

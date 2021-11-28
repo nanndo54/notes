@@ -8,7 +8,7 @@ import morgan from 'morgan'
 import { AddressInfo } from 'net'
 import path from 'path'
 
-import appRouter from './router/appRouter.js'
+import appRouter from './routers/appRouter.js'
 
 const app: Application = express()
 app.set('port', process.env.PORT || 3000)
@@ -18,12 +18,11 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-appRouter(app)
-
 const __dirname = path.resolve()
 const dir = path.join(__dirname, 'dist/client')
 const assetsDir = path.join(dir, 'assets')
 
+app.use('/api', appRouter)
 app.use('/assets', express.static(assetsDir))
 app.use('*', express.static(dir))
 
