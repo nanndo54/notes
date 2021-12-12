@@ -1,4 +1,3 @@
-import BackButton from 'components/BackButton'
 import { getPlaceholder } from 'constants/placeholders'
 import useDebounce from 'hooks/useDebounce'
 import useNote from 'hooks/useNote'
@@ -34,7 +33,7 @@ const NoteDetailPage: FC<Props> = ({ id: initialId }) => {
 
   return (
     <div className={styles.base}>
-      <BackButton />
+      {/* <BackButton /> */}
       <form onChange={handleChangeForm} autoComplete='off'>
         <div className={styles.note}>
           <TextareaAutosize
@@ -45,7 +44,7 @@ const NoteDetailPage: FC<Props> = ({ id: initialId }) => {
           />
           <textarea
             className={styles.content}
-            placeholder='content'
+            placeholder='Start writing'
             {...register('content')}
           />
         </div>

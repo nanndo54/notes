@@ -95,13 +95,16 @@ const notesSlice = createSlice({
       payload.date = new Date(payload.date || new Date())
       const index = state.notes.findIndex((note) => note.id === payload.id)
 
-      if (index !== -1) {
-        state.notes[index] = payload
-        sortNotes(state.notes, state.sortBy, state.direction)
-      }
+      if (index !== -1) state.notes[index] = payload
+      console.log(index)
+
+      sortNotes(state.notes, state.sortBy, state.direction)
+      console.log(state.notes.findIndex((note) => note.id === payload.id))
     },
     [deleteNote.fulfilled.toString()]: (state, { payload }: PayloadAction<Note>) => {
       const index = state.notes.findIndex((note) => note.id === payload.id)
+      console.log(index, state.notes)
+
       if (index !== -1) state.notes.splice(index, 1)
     }
   }

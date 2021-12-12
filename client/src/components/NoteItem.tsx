@@ -26,7 +26,7 @@ const NoteItem: FC<Note> = (note) => {
     dispatch(setSelectedNote(isMenuOpenned ? '' : (id as string)))
   }
 
-  const stringDate = `${date?.getMonth()}/${date?.getDay()} ${date?.getHours()}:${
+  const stringDate = `${date?.getMonth()}/${date?.getDate()} at ${date?.getHours()}:${
     date && date.getMinutes() < 10 ? '0' : ''
   }${date?.getMinutes()}`
 

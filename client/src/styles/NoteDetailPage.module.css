@@ -11,7 +11,7 @@
   background: #449;
 
   box-shadow: 3px 3px 0px 3px #333;
-  border-radius: 25px;
+  border-radius: 45px;
 
   display: flex;
   flex-direction: column;
@@ -29,8 +29,12 @@
   font-size: 1.4rem;
   color: rgb(247, 187, 187);
 
-  padding: 5px 0;
+  padding: 5px 0 10px;
   border-bottom: 2px solid #333;
+}
+
+.note .title::placeholder {
+  color: #bbb;
 }
 
 .note .content {
@@ -39,6 +43,10 @@
   color: #ccc;
 
   overflow: auto;
+}
+
+.note .content::placeholder {
+  color: #bbb;
 }
 
 .note::-webkit-scrollbar {
