@@ -59,7 +59,7 @@ notesRouter.post('/', async (req, res) => {
     const user = await UserModel.findById(userId)
     if (!user) return res.status(404).send({ error: 'User not found' })
 
-    user.notes = user.notes?.concat(savedNote._id)
+    // user.notes = user.notes?.concat(savedNote._id as string)
     await user.save()
 
     res.status(201).send(savedNote)
